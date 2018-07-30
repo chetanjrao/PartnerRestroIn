@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "442248512049",
+    "firebase_url": "https://partner-restroin-1.firebaseio.com",
+    "project_id": "partner-restroin-1",
+    "storage_bucket": "partner-restroin-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442248512049:android:ea0f272d91328a49",
+        "android_client_info": {
+          "package_name": "in.restroin.partnerrestroin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "442248512049-2ph28mddk94bvvgfg81h98gg1cpbtu2q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.restroin.partnerrestroin",
+            "certificate_hash": "ad453d11889030fc6618f2ee4aead271e202817e"
+          }
+        },
+        {
+          "client_id": "442248512049-b574jvumc0d9esqstp6d7t3p9jqnr0q5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.restroin.partnerrestroin",
+            "certificate_hash": "bd7503923ff42b6c3c38e87bada0dab020d33fa9"
+          }
+        },
+        {
+          "client_id": "442248512049-5sb8o9d474d2p7bml7tknqmkooob5skh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDTN9o5h9-38OqANRjpNwOHyNozx6IVQk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "442248512049-5sb8o9d474d2p7bml7tknqmkooob5skh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
