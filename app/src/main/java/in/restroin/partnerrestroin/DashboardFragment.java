@@ -36,16 +36,26 @@ public class DashboardFragment extends Fragment {
         // Inflate the layout for this fragment
         View DashBoardView =  inflater.inflate(R.layout.fragment_dashboard, container, false);
         GraphView graphView = (GraphView) DashBoardView.findViewById(R.id.weekly_analytics);
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>( new DataPoint[]{
-                new DataPoint(1, 1),
-                new DataPoint(2, 4),
-                new DataPoint(3, 2),
-                new DataPoint(4, 3)
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>( new DataPoint[]{
+                new DataPoint(1.0, 0),
+                new DataPoint(2.0, 10),
+                new DataPoint(3.0, 100),
+                new DataPoint(4.0, 78),
         });
         series.setDrawDataPoints(true);
-        series.setDataPointsRadius(30);
-        series.setThickness(1);
+        series.setDataPointsRadius(10);
+        series.setThickness(2);
         graphView.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.NONE);
+        graphView.getGridLabelRenderer().setHorizontalLabelsVisible(false);
+        graphView.getGridLabelRenderer().setTextSize(30f);
+        graphView.getViewport().setXAxisBoundsManual(true);
+        graphView.getViewport().setYAxisBoundsManual(true);
+        graphView.getViewport().setXAxisBoundsManual(true);
+        graphView.getViewport().setYAxisBoundsManual(true);
+        graphView.getViewport().setMaxX(4);
+        graphView.getViewport().setMinX(1);
+        graphView.getViewport().setMinY(0);
+        graphView.getViewport().setMaxY(100);
         graphView.addSeries(series);
         final RecyclerView reviews_recycler = (RecyclerView)DashBoardView.findViewById(R.id.post_and_reviews_recycler);
         reviews_recycler.setLayoutManager(new LinearLayoutManager(getContext()));

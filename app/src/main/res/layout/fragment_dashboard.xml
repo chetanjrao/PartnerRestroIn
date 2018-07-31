@@ -219,6 +219,8 @@
 
                 </RelativeLayout>
                 <com.jjoe64.graphview.GraphView
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
                     android:id="@+id/weekly_analytics"
                     android:layout_below="@id/analytics__"
                     android:layout_width="match_parent"
