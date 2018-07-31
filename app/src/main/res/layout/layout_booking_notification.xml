@@ -1,5 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="0dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
+    android:background="@drawable/layout_review_card_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:background="@drawable/layout_review_card_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/notification_wrapper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:background="@drawable/layout_circular_background"
+                    android:layout_width="40dp"
+                    android:text="P"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/booking_phase"
+                    android:textSize="21dp"
+                    android:textColor="#fff"
+                    android:textAlignment="gravity"
+                    android:gravity="center"
+                    android:layout_height="40dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@id/notification_wrapper"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Booking ID: #2345"
+                    android:fontFamily="@font/raleway_"
+                    android:layout_margin="3dp"
+                    android:textColor="#000"
+                    android:id="@+id/booking_id"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_below="@id/booking_id"
+                    android:layout_margin="5dp"
+                    android:id="@+id/notification_text"
+                    android:text="\u20B9 200 Payment Pending on booking ID #2345"
+                    android:fontFamily="@font/raleway_"
+                    android:textColor="#000"
+                    android:layout_height="wrap_content" />
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
 
 </android.support.v7.widget.CardView>

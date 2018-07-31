@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class AnalyticsActivity extends AppCompatActivity {
@@ -37,21 +38,27 @@ public class AnalyticsActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            RelativeLayout top_bar = (RelativeLayout) findViewById(R.id.top_bar);
             Fragment fragment = null;
             switch (item.getItemId()) {
                 case R.id.navigation_dashboard:
+                    top_bar.setElevation(14f);
                     fragment = new DashboardFragment();
                     break;
                 case R.id.navigation_notifications:
+                    top_bar.setElevation(14f);
                     fragment = new NotificationsFragment();
                     break;
                 case R.id.navigation_payment:
+                    top_bar.setElevation(14f);
                     fragment = new PaymentsFragment();
                     break;
                 case R.id.navigation_contacts:
+                    top_bar.setElevation(0f);
                     fragment = new ContactsFragment();
                     break;
                 case R.id.navigation_profile:
+                    top_bar.setElevation(14f);
                     fragment = new ProfileFragment();
                     break;
             }

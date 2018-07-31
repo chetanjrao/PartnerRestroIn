@@ -195,6 +195,7 @@
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
+                    android:id="@+id/analytics__"
                     android:layout_marginTop="10dp"
                     android:layout_centerHorizontal="true"
                     android:layout_width="wrap_content"
@@ -211,11 +212,17 @@
                         android:textSize="17sp"
                         android:fontFamily="@font/raleway_"
                         android:textColor="#000"
+                        android:id="@+id/analytics_"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="Analytics"/>
 
                 </RelativeLayout>
+                <com.jjoe64.graphview.GraphView
+                    android:id="@+id/weekly_analytics"
+                    android:layout_below="@id/analytics__"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
 
             </RelativeLayout>
 
@@ -341,8 +348,8 @@
                     </RelativeLayout>
 
                     <android.support.v7.widget.RecyclerView
-                        android:layout_marginStart="10sp"
-                        android:layout_marginEnd="10sp"
+                        android:layout_marginStart="5sp"
+                        android:layout_marginEnd="5sp"
                         android:layout_marginTop="10sp"
                         android:nestedScrollingEnabled="false"
                         android:layout_below="@id/review_layout_"
