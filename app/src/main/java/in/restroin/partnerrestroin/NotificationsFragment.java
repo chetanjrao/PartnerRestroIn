@@ -90,7 +90,7 @@ public class NotificationsFragment extends Fragment {
                     TextView phase = childView.findViewById(R.id.booking_phase);
                     String phase_ = phase.getText().toString();
                     if(phase_.equals("B")){
-                        Intent go_to_confirm = new Intent(getContext(), BookingActivity.class);
+                        Intent go_to_confirm = new Intent(getActivity(), BookingActivity.class);
                         startActivity(go_to_confirm);
                     } else {
                         Toast.makeText(getContext(), "Phase id " + phase_, Toast.LENGTH_SHORT).show();

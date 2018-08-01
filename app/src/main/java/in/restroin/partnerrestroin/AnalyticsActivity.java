@@ -31,6 +31,7 @@ public class AnalyticsActivity extends AppCompatActivity {
         loadfragment(new DashboardFragment());
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        overridePendingTransition(0, 0);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -74,8 +75,4 @@ public class AnalyticsActivity extends AppCompatActivity {
         return false;
     }
 
-    @Override
-    public void overridePendingTransition(int enterAnim, int exitAnim) {
-        super.overridePendingTransition(R.anim.right_slide_in, R.anim.right_silde_out);
-    }
 }

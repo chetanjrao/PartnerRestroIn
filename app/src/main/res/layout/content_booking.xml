@@ -226,6 +226,7 @@
 
                <RelativeLayout
                    android:layout_width="0dp"
+                   android:id="@+id/call_layout"
                    android:layout_weight="1"
                    android:layout_height="120dp">
 
