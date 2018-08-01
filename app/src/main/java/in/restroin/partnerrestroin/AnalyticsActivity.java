@@ -74,5 +74,8 @@ public class AnalyticsActivity extends AppCompatActivity {
         return false;
     }
 
-
+    @Override
+    public void overridePendingTransition(int enterAnim, int exitAnim) {
+        super.overridePendingTransition(R.anim.right_slide_in, R.anim.right_silde_out);
+    }
 }

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018. An change in this code must be done under my supervision and any misuse my lead to legal actions
+  -->
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="0dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
+    android:background="@drawable/layout_review_card_background"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:background="@drawable/layout_review_card_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/contats_list_image"
+            android:src="@mipmap/pp"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Chethan Jagannatha Kulkarni"
+            android:fontFamily="@font/raleway_"
+            android:layout_toEndOf="@id/contats_list_image"
+            android:layout_centerVertical="true"
+            android:textColor="#000"
+            android:id="@+id/contacts_list_customer_name"
+            android:layout_marginStart="5dp"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:contentDescription="9110466718"
+            android:layout_width="25dp"
+            android:id="@+id/call"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:layout_centerVertical="true"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_call"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true"/>
+
+        <ImageView
+            android:contentDescription="9110466718"
+            android:layout_width="25dp"
+            android:id="@+id/email"
+            android:layout_centerVertical="true"
+            android:layout_height="25dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_mail"
+            android:layout_toStartOf="@id/call"
+            android:layout_marginEnd="25dp"
+            android:layout_marginStart="20dp" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

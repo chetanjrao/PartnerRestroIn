@@ -18,11 +18,16 @@
         </activity>
         <activity
             android:name=".AnalyticsActivity"
-            android:label="@string/title_activity_analytics"></activity>
+            android:label="@string/title_activity_analytics" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name=".BookingActivity"
+            android:label="@string/title_activity_booking"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

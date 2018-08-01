@@ -9,6 +9,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
+        android:layout_margin="5dp"
         android:background="@drawable/layout_review_card_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

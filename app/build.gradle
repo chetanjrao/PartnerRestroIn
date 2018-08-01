@@ -44,5 +44,7 @@ dependencies {
 
     implementation 'net.cachapa.expandablelayout:expandablelayout:2.9.2'
 
+    implementation 'com.github.ittianyu:BottomNavigationViewEx:1.2.4'
+
 }
 apply plugin: 'com.google.gms.google-services'

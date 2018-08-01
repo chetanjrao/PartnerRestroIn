@@ -27,6 +27,7 @@ public class StaffContactFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View StaffContacts =  inflater.inflate(R.layout.layout_contact_staff, container, false);
+
         return StaffContacts;
     }
 }

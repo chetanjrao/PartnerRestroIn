@@ -224,7 +224,7 @@
                     android:id="@+id/weekly_analytics"
                     android:layout_below="@id/analytics__"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp" />
+                    android:layout_height="195dp" />
 
             </RelativeLayout>
 

@@ -44,10 +44,10 @@ public class DashboardFragment extends Fragment {
         });
         series.setDrawDataPoints(true);
         series.setDataPointsRadius(10);
-        series.setThickness(2);
+        series.setThickness(3);
         graphView.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.NONE);
         graphView.getGridLabelRenderer().setHorizontalLabelsVisible(false);
-        graphView.getGridLabelRenderer().setTextSize(30f);
+        graphView.getGridLabelRenderer().setTextSize(25f);
         graphView.getViewport().setXAxisBoundsManual(true);
         graphView.getViewport().setYAxisBoundsManual(true);
         graphView.getViewport().setXAxisBoundsManual(true);

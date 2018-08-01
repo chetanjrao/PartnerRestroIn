@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018. An change in this code must be done under my supervision and any misuse my lead to legal actions
+  -->
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".BookingActivity"
+    tools:showIn="@layout/activity_booking">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_marginBottom="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/booking_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.CardView
+            app:cardCornerRadius="0dp"
+            app:cardElevation="1dp"
+            android:id="@+id/guest_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textColor="#000"
+                    android:fontFamily="@font/raleway_"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/guest_text"
+                    android:textSize="16sp"
+                    android:layout_height="wrap_content"
+                    android:text="Guest Arriving"/>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="100dp"
+                    android:layout_below="@id/guest_text"
+                    android:src="@mipmap/pp"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/guest_profile_image"
+                    android:layout_height="100dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:text="Chethan Jagannatha Kulkarni"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/raleway_"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:layout_below="@id/guest_profile_image"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/booking_info_card"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/guest_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_margin="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_margin="10dp"
+                    android:id="@+id/booking_id_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:fontFamily="@font/raleway_"
+                        android:text="Booking ID: "
+                        android:textSize="17sp"
+                        android:textColor="#000"
+                        android:id="@+id/booking_id_text"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:fontFamily="@font/raleway_"
+                        android:text="#234"
+                        android:textStyle="bold"
+                        android:textSize="17sp"
+                        android:layout_toEndOf="@id/booking_id_text"
+                        android:id="@+id/booking_id"
+                        android:textColor="#000"
+                        android:layout_height="wrap_content" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/booking_otp_layout"
+                    android:layout_below="@id/booking_id_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:fontFamily="@font/raleway_"
+                        android:text="Booking OTP: "
+                        android:textSize="17sp"
+                        android:textColor="#000"
+                        android:id="@+id/booking_otp_text"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:fontFamily="@font/raleway_"
+                        android:text="25589"
+                        android:textStyle="bold"
+                        android:textSize="17sp"
+                        android:layout_toEndOf="@id/booking_otp_text"
+                        android:id="@+id/booking_otp"
+                        android:textColor="#000"
+                        android:layout_height="wrap_content" />
+
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/booking_slot_layout"
+                    android:layout_below="@id/booking_otp_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:fontFamily="@font/raleway_"
+                        android:text="Booking Slot: "
+                        android:textSize="17sp"
+                        android:textColor="#000"
+                        android:id="@+id/booking_slot_text"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:fontFamily="@font/raleway_"
+                        android:text="2:00PM - 3:00PM"
+                        android:textStyle="bold"
+                        android:textSize="17sp"
+                        android:layout_toEndOf="@id/booking_slot_text"
+                        android:id="@+id/booking_slot"
+                        android:textColor="#000"
+                        android:layout_height="wrap_content" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/booking_people_layout"
+                    android:layout_below="@id/booking_slot_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:fontFamily="@font/raleway_"
+                        android:text="No of Customers: "
+                        android:textSize="17sp"
+                        android:textColor="#000"
+                        android:id="@+id/booking_people_text"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:fontFamily="@font/raleway_"
+                        android:text="4 M, 2 F"
+                        android:textStyle="bold"
+                        android:textSize="17sp"
+                        android:layout_toEndOf="@id/booking_people_text"
+                        android:id="@+id/booking_people"
+                        android:textColor="#000"
+                        android:layout_height="wrap_content" />
+
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="10dp"
+            app:cardElevation="1dp"
+            android:background="#fff"
+            android:layout_marginBottom="5dp"
+            app:cardCornerRadius="0dp"
+            android:layout_below="@id/booking_info_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:dividerPadding="25dp"
+                android:showDividers="middle"
+                android:divider="?android:listDivider"
+                android:weightSum="3"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+               <RelativeLayout
+                   android:layout_width="0dp"
+                   android:layout_weight="1"
+                   android:layout_height="120dp">
+
+                   <ImageView
+                       android:layout_width="50dp"
+                       android:layout_centerInParent="true"
+                       android:src="@drawable/ic_call"
+                       android:id="@+id/customer_call"
+                       android:layout_height="50dp" />
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_below="@id/customer_call"
+                       android:layout_centerHorizontal="true"
+                       android:text="Call Now"
+                       android:textColor="#000"
+                       android:fontFamily="@font/raleway_"
+                       android:layout_height="wrap_content" />
+
+               </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="120dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_mail"
+                        android:id="@+id/customer_email"
+                        android:layout_height="50dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_below="@id/customer_email"
+                        android:layout_centerHorizontal="true"
+                        android:text="Email"
+                        android:textColor="#000"
+                        android:fontFamily="@font/raleway_"
+                        android:layout_height="wrap_content" />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="120dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_message"
+                        android:id="@+id/customer_message"
+                        android:layout_height="50dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_below="@id/customer_message"
+                        android:layout_centerHorizontal="true"
+                        android:text="Text Message"
+                        android:textColor="#000"
+                        android:fontFamily="@font/raleway_"
+                        android:layout_height="wrap_content" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:background="#fff"
+        android:elevation="4dp"
+        android:clipChildren="false"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <LinearLayout
+            android:background="#fff"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:elevation="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:focusable="true"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/cancel_button_image"
+                        android:layout_width="40dp"
+                        android:src="@drawable/ic_cancel"
+                        android:layout_centerVertical="true"
+                        android:layout_height="40dp" />
+
+                    <TextView
+                        android:layout_toEndOf="@id/cancel_button_image"
+                        android:layout_width="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Cancel Booking"
+                        android:fontFamily="@font/raleway_"
+                        android:textColor="#000"
+                        android:layout_height="wrap_content" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:focusable="true"
+
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/confirm_button_image"
+                    android:layout_width="40dp"
+                    android:src="@drawable/ic_confirm"
+                    android:layout_centerVertical="true"
+                    android:layout_height="40dp" />
+
+                <TextView
+                    android:layout_toEndOf="@id/confirm_button_image"
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="Confirm Booking"
+                    android:fontFamily="@font/raleway_"
+                    android:textColor="#000"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>
