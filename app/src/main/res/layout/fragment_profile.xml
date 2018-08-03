@@ -119,14 +119,13 @@
 
             </android.support.v7.widget.CardView>
 
-
             <android.support.v7.widget.CardView
                 app:cardCornerRadius="0dp"
                 android:layout_below="@id/profile_details_card"
                 app:cardElevation="1dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:id="@+id/actions"
+                android:id="@+id/restaurants_incharge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -134,9 +133,167 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="#000"
+                        android:id="@+id/restaurant_incharge_text"
+                        android:text="Restaurants Claimed"
+                        android:textSize="17sp"
+                        android:layout_margin="10dp"
+                        android:fontFamily="@font/raleway_"
+                        android:layout_centerHorizontal="true"
+                        android:layout_height="wrap_content" />
 
 
                 </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                app:cardCornerRadius="0dp"
+                android:layout_below="@id/restaurants_incharge"
+                app:cardElevation="1dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/actions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+               <LinearLayout
+                   android:orientation="vertical"
+                   android:id="@+id/actions_linear_layout"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+
+                   <RelativeLayout
+                       android:focusable="true"
+                       android:clickable="true"
+                       android:foreground="?attr/selectableItemBackground"
+                       android:padding="15dp"
+                       android:id="@+id/report_issue"
+                       android:background="@drawable/layout_review_card_background"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp">
+
+                       <TextView
+                           android:text="Report an Issue"
+                           android:textSize="17sp"
+                           android:layout_centerVertical="true"
+                           android:fontFamily="@font/raleway_"
+                           android:textColor="#000"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content" />
+
+                   </RelativeLayout>
+
+                   <RelativeLayout
+                       android:focusable="true"
+                       android:clickable="true"
+                       android:foreground="?attr/selectableItemBackground"
+                       android:padding="15dp"
+                       android:id="@+id/give_feedback"
+                       android:background="@drawable/layout_review_card_background"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp">
+
+                       <TextView
+                           android:text="Give Feed back"
+                           android:textSize="17sp"
+                           android:layout_centerVertical="true"
+                           android:fontFamily="@font/raleway_"
+                           android:textColor="#000"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content" />
+
+                   </RelativeLayout>
+
+                   <RelativeLayout
+                       android:focusable="true"
+                       android:clickable="true"
+                       android:id="@+id/rate_us"
+                       android:foreground="?attr/selectableItemBackground"
+                       android:padding="15dp"
+                       android:background="@drawable/layout_review_card_background"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp">
+
+                       <TextView
+                           android:text="Rate Us on PlayStore"
+                           android:textSize="17sp"
+                           android:layout_centerVertical="true"
+                           android:fontFamily="@font/raleway_"
+                           android:textColor="#000"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content" />
+
+                   </RelativeLayout>
+
+                   <RelativeLayout
+                       android:focusable="true"
+                       android:clickable="true"
+                       android:id="@+id/need_help"
+                       android:foreground="?attr/selectableItemBackground"
+                       android:padding="15dp"
+                       android:background="@drawable/layout_review_card_background"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp">
+
+                       <TextView
+                           android:text="Need Help?"
+                           android:textSize="17sp"
+                           android:layout_centerVertical="true"
+                           android:fontFamily="@font/raleway_"
+                           android:textColor="#000"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content" />
+
+                   </RelativeLayout>
+
+                   <RelativeLayout
+                       android:focusable="true"
+                       android:clickable="true"
+                       android:id="@+id/restaurant_status"
+                       android:foreground="?attr/selectableItemBackground"
+                       android:padding="15dp"
+                       android:background="@drawable/layout_review_card_background"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp">
+
+                       <android.support.v7.widget.SwitchCompat
+                           android:text="Status: Offline"
+                           android:textSize="17sp"
+                           android:id="@+id/status_restaurant_switch"
+                           android:layout_centerVertical="true"
+                           android:fontFamily="@font/raleway_"
+                           android:textColor="#ff2600"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content" />
+
+                   </RelativeLayout>
+
+                   <RelativeLayout
+                       android:focusable="true"
+                       android:clickable="true"
+                       android:id="@+id/log_out"
+                       android:foreground="?attr/selectableItemBackground"
+                       android:padding="15dp"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp">
+
+                       <TextView
+                           android:text="Sign Out"
+                           android:textSize="17sp"
+                           android:layout_centerVertical="true"
+                           android:fontFamily="@font/raleway_"
+                           android:textColor="#ef0000"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content" />
+
+                   </RelativeLayout>
+
+
+               </LinearLayout>
 
             </android.support.v7.widget.CardView>
 
@@ -148,6 +305,7 @@
     <android.support.design.widget.FloatingActionButton
         android:layout_width="50dp"
         android:layout_margin="10dp"
+        android:src="@drawable/ic_edit"
         android:layout_gravity="bottom|end"
         android:id="@+id/add_restaurants_button"
         android:layout_height="50dp" />

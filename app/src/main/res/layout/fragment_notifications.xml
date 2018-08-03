@@ -6,17 +6,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".NotificationsFragment">
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:elevation="4dp"
-        android:id="@+id/notifications_recyclerView"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="10dp"
+            android:elevation="4dp"
+            android:id="@+id/notifications_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </android.support.v7.widget.RecyclerView>
+        </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
 
 
 </FrameLayout>

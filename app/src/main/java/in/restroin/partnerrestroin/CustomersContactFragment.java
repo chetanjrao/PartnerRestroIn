@@ -50,7 +50,7 @@ public class CustomersContactFragment extends Fragment {
         contacts.add(new ContactsModel("Chethan Jagannatha Kulkarni", "9110466718", "chethanjkulkarni@gmail.com", R.mipmap.pp));
         contacts.add(new ContactsModel("Chethan Jagannatha Kulkarni", "9110466718", "chethanjkulkarni@gmail.com", R.mipmap.pp));
         contacts.add(new ContactsModel("Chethan Jagannatha Kulkarni", "9110466718", "chethanjkulkarni@gmail.com", R.mipmap.pp));
-        contacts.add(new ContactsModel("Chethan Jagannatha Kulkarni", "9110466718", "chethanjkulkarni@gmail.com", R.mipmap.pp));
+        contacts.add(new ContactsModel("Chethan Kulkarni", "9110466718", "chethanjkulkarni@gmail.com", R.mipmap.pp));
         recyclerView.setLayoutManager(layoutManager);
         ContactsAdapter adapter = new ContactsAdapter(contacts);
         recyclerView.setAdapter(adapter);

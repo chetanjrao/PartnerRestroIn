@@ -46,7 +46,7 @@ public class NotificationsFragment extends Fragment {
         notifications.add(new NotificationsModel(1234, "Booking Pending with booking id #1234. Click to confirm booking", "B"));
         notifications.add(new NotificationsModel(1234, "Payment Pending with booking id #1234. Click to complete payment", "P"));
         notifications.add(new NotificationsModel(1234, "Booking Pending with booking id #1234. Click to confirm booking", "B"));
-        notifications.add(new NotificationsModel(1234, "Payment Pending with booking id #1234. Click to complete payment", "P"));
+        notifications.add(new NotificationsModel(134, "Payment Pending with booking id #123. Click to complete payment", "P"));
         NotificationsAdapter adapter = new NotificationsAdapter(notifications);
         NotificationRecycler.setLayoutManager(layoutManager);
 
