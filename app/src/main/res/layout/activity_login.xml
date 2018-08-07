@@ -1,24 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     tools:context=".LoginActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/analytics_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Go to Analytics" />
+    <RelativeLayout
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+        <RelativeLayout
+            android:id="@+id/title_layout"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/title_text"
+                android:text="Partner RestroIN"
+                android:textSize="22sp"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/raleway_"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_below="@id/title_layout"
+            android:id="@+id/login_layout"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:hint="UserName"
+                android:layout_margin="5sp"
+                android:id="@+id/username"
+                android:fontFamily="@font/raleway_"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.design.widget.TextInputEditText>
+
+            <android.support.design.widget.TextInputEditText
+                android:hint="Password"
+                android:layout_margin="5sp"
+                android:id="@+id/password"
+                android:layout_below="@id/username"
+                android:fontFamily="@font/raleway_"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.design.widget.TextInputEditText>
+
+            <CheckBox
+                android:layout_below="@id/password"
+                android:layout_margin="5sp"
+                android:checked="true"
+                style="@style/CheckBoxTheme"
+                android:text="I accept the terms and conditions"
+                android:id="@+id/terms_and_conditions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_below="@id/terms_and_conditions"
+                android:layout_margin="5sp"
+                android:text="Sign IN"
+                android:fontFamily="@font/raleway_"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_below="@id/login_layout"
+            android:layout_margin="10dp"
+            android:id="@+id/actions_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_margin="5dp"
+                android:id="@+id/trouble_signing_in"
+                android:layout_width="match_parent"
+                android:text="Trouble Signing in?"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17sp"
+                android:fontFamily="@font/raleway_"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_margin="5dp"
+                android:layout_below="@id/trouble_signing_in"
+                android:id="@+id/forgot_password"
+                android:layout_width="match_parent"
+                android:text="Forgot your Password?"
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="17sp"
+                android:fontFamily="@font/raleway_"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.CardView
+            app:cardElevation="0dp"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/actions_layout"
+            android:id="@+id/become_our_partner_layout"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:id="@+id/collab"
+                    android:src="@drawable/ic_collaboration"
+                    android:layout_height="80dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Become our partner"
+                    android:fontFamily="@font/raleway_"
+                    android:textColor="#000"
+                    android:layout_toEndOf="@id/collab"
+                    android:layout_centerVertical="true"
+                    android:textSize="18sp"
+                    android:layout_marginStart="10dp"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+    </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

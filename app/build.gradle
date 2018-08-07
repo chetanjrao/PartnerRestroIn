@@ -46,5 +46,9 @@ dependencies {
 
     implementation 'com.github.ittianyu:BottomNavigationViewEx:1.2.4'
 
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+
 }
 apply plugin: 'com.google.gms.google-services'
