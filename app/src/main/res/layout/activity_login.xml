@@ -70,6 +70,7 @@
                 android:layout_margin="5sp"
                 android:checked="true"
                 style="@style/CheckBoxTheme"
+                android:fontFamily="@font/raleway_"
                 android:text="I accept the terms and conditions"
                 android:id="@+id/terms_and_conditions"
                 android:layout_width="match_parent"
