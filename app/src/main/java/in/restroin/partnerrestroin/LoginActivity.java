@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     Gson profileGson = new GsonBuilder().registerTypeAdapter(ProfileModel.class, new ProfileDeserializer()).create();
 
     Retrofit.Builder builder = new Retrofit.Builder()
-            .baseUrl("http://192.168.43.24/")
+            .baseUrl("https://developers.restroin.in/")
             .addConverterFactory(GsonConverterFactory.create(profileGson));
 
     OkHttpClient.Builder client = new OkHttpClient.Builder();

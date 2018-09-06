@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 public class BookingActivity extends AppCompatActivity {
 
@@ -30,8 +31,11 @@ public class BookingActivity extends AppCompatActivity {
         relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "9110466718"));
-                if (ActivityCompat.checkSelfPermission(BookingActivity.this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(BookingActivity.this, "hi", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Intent.ACTION_CALL);
+                intent.setData(Uri.parse("tel:" + "9110466718"));
+                if (ActivityCompat.checkSelfPermission(BookingActivity.this, android.Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+
                     return;
                 }
                 startActivity(intent);
