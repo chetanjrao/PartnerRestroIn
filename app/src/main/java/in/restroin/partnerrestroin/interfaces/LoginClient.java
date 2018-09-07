@@ -16,7 +16,7 @@ import retrofit2.http.Path;
 
 public interface LoginClient {
 
-    @GET("api/authorization/client")
+    @POST("api/authorization/client")
     Call<ProfileModel> getDetails(
 
     );

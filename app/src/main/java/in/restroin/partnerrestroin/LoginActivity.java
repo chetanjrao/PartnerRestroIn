@@ -1,6 +1,7 @@
 package in.restroin.partnerrestroin;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,8 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import java.util.Objects;
 
 import in.restroin.partnerrestroin.interfaces.LoginClient;
 import in.restroin.partnerrestroin.models.LoginModel;
@@ -31,41 +34,18 @@ public class LoginActivity extends AppCompatActivity {
     Retrofit.Builder builder = new Retrofit.Builder()
             .baseUrl("https://developers.restroin.in/")
             .addConverterFactory(GsonConverterFactory.create(profileGson));
-
     OkHttpClient.Builder client = new OkHttpClient.Builder();
-
     Retrofit retrofit = builder.client(client.build()).build();
-
     LoginClient loginClient = retrofit.create(LoginClient.class);
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        login();
     }
 
+    private String ProcessAuthentication(String username, String password) {
 
-
-    private void login() {
-        Call<ProfileModel> call = loginClient.getDetails();
-        call.enqueue(new Callback<ProfileModel>() {
-            @Override
-            public void onResponse(Call<ProfileModel> call, Response<ProfileModel> response) {
-                if (response.isSuccessful()){
-                    Toast.makeText(LoginActivity.this, "Data Successful : email " + response.body().getEmail(), Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(LoginActivity.this, "Data UnSuccessful : message" + response.errorBody(), Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ProfileModel> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "Error : " + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        return null;
     }
 }
