@@ -4,8 +4,11 @@
 
 package in.restroin.partnerrestroin.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class LoginModel {
-    private String login_username, login_password;
+    @SerializedName("login_username") private String login_username;
+    @SerializedName("login_password") private String login_password;
 
     public LoginModel(String login_username, String login_password) {
         this.login_username = login_username;

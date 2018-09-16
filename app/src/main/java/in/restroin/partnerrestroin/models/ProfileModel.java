@@ -7,36 +7,6 @@ package in.restroin.partnerrestroin.models;
 import android.net.Uri;
 
 public class ProfileModel {
-    private String name, mobile, token;
+    private String name, mobile, image;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public ProfileModel(String name, String mobile, String token) {
-
-        this.name = name;
-        this.mobile = mobile;
-        this.token = token;
-    }
 }

@@ -9,23 +9,54 @@ public class SavedPreferences {
     private String KEY_TYPE = "AUTHENTICATION";
     private SharedPreferences sharedPreferences;
 
-    public void setSharedPreferences(@NonNull Context context, String username, String password, String public_api_key){
+    public void setSharedPreferences(@NonNull Context context, String username, String password, String public_api_key, String partner_id){
         this.context = context;
         sharedPreferences = context.getSharedPreferences(KEY_TYPE, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        if(getApiKey(context).isEmpty()){
+        if(getApiKey(context) == null){
             editor.putString("auth_username", username);
             editor.putString("auth_password", password);
+            editor.putString("partner_id", partner_id);
             editor.putString("public_api_key", public_api_key);
             editor.apply();
         }
-
     }
 
-    private String getApiKey(Context context){
+    public void device_uid_set(Context context, String device_id){
+        sharedPreferences = context.getSharedPreferences("Notifications", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        if(device_uid_get(context) == null){
+            editor.putString("device_uid", device_id).apply();
+        }
+    }
+
+    public String device_uid_get(Context context){
+        sharedPreferences = context.getSharedPreferences("Notifications", Context.MODE_PRIVATE);
+        return sharedPreferences.getString("device_uid", null);
+    }
+
+    public String getApiKey(Context context){
         this.context = context;
         sharedPreferences = context.getSharedPreferences(KEY_TYPE, Context.MODE_PRIVATE);
         return sharedPreferences.getString("public_api_key", null);
+    }
+
+    public String getPartnerID(Context context){
+        this.context = context;
+        sharedPreferences = context.getSharedPreferences(KEY_TYPE, Context.MODE_PRIVATE);
+        return sharedPreferences.getString("partner_id", null);
+    }
+
+    public String getUsername(Context context){
+        this.context = context;
+        sharedPreferences = context.getSharedPreferences(KEY_TYPE, Context.MODE_PRIVATE);
+        return sharedPreferences.getString("auth_username", null);
+    }
+
+    public String getPassword(Context context){
+        this.context = context;
+        sharedPreferences = context.getSharedPreferences(KEY_TYPE, Context.MODE_PRIVATE);
+        return sharedPreferences.getString("auth_password", null);
     }
 
 }
