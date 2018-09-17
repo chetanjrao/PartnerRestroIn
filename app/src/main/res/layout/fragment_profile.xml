@@ -39,6 +39,7 @@
                         android:textSize="20dp"
                         android:fontFamily="@font/raleway_"
                         android:textColor="#000"
+                        android:id="@+id/profile_name"
                         android:text="Chethan Jagannatha Kulkarni"
                         android:layout_marginTop="20dp"
                         android:layout_below="@id/profile_image"
