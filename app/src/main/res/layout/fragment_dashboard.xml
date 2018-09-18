@@ -178,6 +178,7 @@
 
         <android.support.v7.widget.CardView
             app:cardElevation="3dp"
+            android:visibility="gone"
             app:cardCornerRadius="0dp"
             android:background="#fff"
             android:clipChildren="false"
@@ -297,6 +298,7 @@
                         android:layout_below="@id/overall_rating"
                         android:id="@+id/overall_rating_bar"
                         android:paddingTop="10dp"
+                        android:isIndicator="true"
                         style="?attr/ratingBarStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="80dp" />

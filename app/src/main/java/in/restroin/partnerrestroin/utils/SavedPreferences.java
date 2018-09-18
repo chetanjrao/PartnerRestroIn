@@ -59,4 +59,16 @@ public class SavedPreferences {
         return sharedPreferences.getString("auth_password", null);
     }
 
+    public void setRestaurantID(Context context, String restaurant_id){
+        this.context = context;
+        sharedPreferences = context.getSharedPreferences(KEY_TYPE, Context.MODE_PRIVATE);
+        sharedPreferences.edit().putString("restaurant_id", restaurant_id).apply();
+    }
+
+    public String getRestaurantID(Context context){
+        this.context = context;
+        sharedPreferences = context.getSharedPreferences(KEY_TYPE, Context.MODE_PRIVATE);
+        return sharedPreferences.getString("restaurant_id", null);
+    }
+
 }

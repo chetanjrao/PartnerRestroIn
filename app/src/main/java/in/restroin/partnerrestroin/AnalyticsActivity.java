@@ -104,14 +104,14 @@ public class AnalyticsActivity extends AppCompatActivity {
                     top_bar.setElevation(14f);
                     fragment = new NotificationsFragment();
                     break;
-                case R.id.navigation_payment:
-                    top_bar.setElevation(14f);
-                    fragment = new PaymentsFragment();
-                    break;
-                case R.id.navigation_contacts:
-                    top_bar.setElevation(0f);
-                    fragment = new ContactsFragment();
-                    break;
+//                case R.id.navigation_payment:
+//                    top_bar.setElevation(14f);
+//                    fragment = new PaymentsFragment();
+//                    break;
+//                case R.id.navigation_contacts:
+//                    top_bar.setElevation(0f);
+//                    fragment = new ContactsFragment();
+//                    break;
                 case R.id.navigation_profile:
                     top_bar.setElevation(14f);
                     fragment = new ProfileFragment();
