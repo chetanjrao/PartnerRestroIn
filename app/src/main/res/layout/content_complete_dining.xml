@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".CompleteDining"
+    tools:showIn="@layout/activity_complete_dining">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/bill_amount_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:inputType="numberDecimal"
+                android:id="@+id/bill_amount"
+                android:layout_width="match_parent"
+                android:hint="Enter the bill amount (in Rs.)"
+                android:fontFamily="@font/raleway_"
+                android:layout_height="wrap_content" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/complete_the_booking_button"
+            android:layout_below="@id/bill_amount_layout"
+            android:layout_width="wrap_content"
+            android:text="Complete the Booking"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

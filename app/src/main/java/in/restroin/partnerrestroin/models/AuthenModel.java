@@ -1,7 +1,7 @@
 package in.restroin.partnerrestroin.models;
 
 public class AuthenModel {
-    private String error_code, message, access_token, partner_id;
+    private String error_code, message, access_token, partner_id, restaurant_id;
 
     public String getError_code() {
         return error_code;
@@ -35,11 +35,20 @@ public class AuthenModel {
         this.partner_id = partner_id;
     }
 
-    public AuthenModel(String error_code, String message, String access_token, String partner_id) {
+    public String getRestaurant_id() {
+        return restaurant_id;
+    }
+
+    public void setRestaurant_id(String restaurant_id) {
+        this.restaurant_id = restaurant_id;
+    }
+
+    public AuthenModel(String error_code, String message, String access_token, String partner_id, String restaurant_id) {
 
         this.error_code = error_code;
         this.message = message;
         this.access_token = access_token;
         this.partner_id = partner_id;
+        this.restaurant_id = restaurant_id;
     }
 }

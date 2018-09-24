@@ -178,7 +178,7 @@
                        android:layout_height="50dp">
 
                        <TextView
-                           android:text="Report an Issue"
+                           android:text="Change Coupons"
                            android:textSize="17sp"
                            android:layout_centerVertical="true"
                            android:fontFamily="@font/raleway_"
@@ -246,28 +246,6 @@
                            android:layout_centerVertical="true"
                            android:fontFamily="@font/raleway_"
                            android:textColor="#000"
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content" />
-
-                   </RelativeLayout>
-
-                   <RelativeLayout
-                       android:focusable="true"
-                       android:clickable="true"
-                       android:id="@+id/restaurant_status"
-                       android:foreground="?attr/selectableItemBackground"
-                       android:padding="15dp"
-                       android:background="@drawable/layout_review_card_background"
-                       android:layout_width="match_parent"
-                       android:layout_height="50dp">
-
-                       <android.support.v7.widget.SwitchCompat
-                           android:text="Status: Offline"
-                           android:textSize="17sp"
-                           android:id="@+id/status_restaurant_switch"
-                           android:layout_centerVertical="true"
-                           android:fontFamily="@font/raleway_"
-                           android:textColor="#ff2600"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content" />
 

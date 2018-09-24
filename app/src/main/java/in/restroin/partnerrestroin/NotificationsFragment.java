@@ -22,10 +22,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.restroin.partnerrestroin.adapters.NotificationsAdapter;
+import in.restroin.partnerrestroin.fragments.ActiveFragment;
+import in.restroin.partnerrestroin.fragments.CancelledFragment;
+import in.restroin.partnerrestroin.fragments.CompletedFragment;
+import in.restroin.partnerrestroin.fragments.PendingFragment;
 import in.restroin.partnerrestroin.models.NotificationsModel;
 
 
 public class NotificationsFragment extends Fragment {
+
 
 
     List<NotificationsModel> notifications = new ArrayList<>();
@@ -38,93 +43,19 @@ public class NotificationsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_notifications, container, false);
-        ViewPager viewPager = (ViewPager) view.findViewById(R.id.contacts_view_pager);
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.bookings_view_pager);
         setupViewPager(viewPager);
-        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.contact_tab_layout);
+        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.bookings_tab_layout);
         tabLayout.setupWithViewPager(viewPager);
-//        RecyclerView NotificationRecycler = (RecyclerView) view.findViewById(R.id.notifications_recyclerView);
-//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-//        notifications.add(new NotificationsModel(1234, "Booking Pending with booking id #1234. Click to confirm booking", "B"));
-//        notifications.add(new NotificationsModel(1234, "Payment Pending with booking id #1234. Click to complete payment", "P"));
-//        notifications.add(new NotificationsModel(1234, "Booking Pending with booking id #1234. Click to confirm booking", "B"));
-//        notifications.add(new NotificationsModel(1234, "Payment Pending with booking id #1234. Click to complete payment", "P"));
-//        notifications.add(new NotificationsModel(1234, "Booking Pending with booking id #1234. Click to confirm booking", "B"));
-//        notifications.add(new NotificationsModel(1234, "Payment Pending with booking id #1234. Click to complete payment", "P"));
-//        notifications.add(new NotificationsModel(1234, "Booking Pending with booking id #1234. Click to confirm booking", "B"));
-//        notifications.add(new NotificationsModel(1234, "Payment Pending with booking id #1234. Click to complete payment", "P"));
-//        notifications.add(new NotificationsModel(1234, "Booking Pending with booking id #1234. Click to confirm booking", "B"));
-//        notifications.add(new NotificationsModel(1234, "Payment Pending with booking id #1234. Click to complete payment", "P"));
-//        notifications.add(new NotificationsModel(1234, "Booking Pending with booking id #1234. Click to confirm booking", "B"));
-//        notifications.add(new NotificationsModel(134, "Payment Pending with booking id #123. Click to complete payment", "P"));
-//        NotificationsAdapter adapter = new NotificationsAdapter(notifications);
-//        NotificationRecycler.setLayoutManager(layoutManager);
-//        final GestureDetector gestureDetector = new GestureDetector(getContext(), new GestureDetector.OnGestureListener() {
-//            @Override
-//            public boolean onDown(MotionEvent motionEvent) {
-//                return false;
-//            }
-//
-//            @Override
-//            public void onShowPress(MotionEvent motionEvent) {
-//
-//            }
-//
-//            @Override
-//            public boolean onSingleTapUp(MotionEvent motionEvent) {
-//                return true;
-//            }
-//
-//            @Override
-//            public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
-//                return false;
-//            }
-//
-//            @Override
-//            public void onLongPress(MotionEvent motionEvent) {
-//
-//            }
-//
-//            @Override
-//            public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
-//                return false;
-//            }
-//        });
-//
-//        NotificationRecycler.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-//            @Override
-//            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-//                View childView = rv.findChildViewUnder(e.getX(), e.getY());
-//                if(childView != null && gestureDetector.onTouchEvent(e)) {
-//                    TextView phase = childView.findViewById(R.id.booking_phase);
-//                    String phase_ = phase.getText().toString();
-//                    if(phase_.equals("B")){
-//                        Intent go_to_confirm = new Intent(getActivity(), BookingActivity.class);
-//                        startActivity(go_to_confirm);
-//                    } else {
-//                        Toast.makeText(getContext(), "Phase id " + phase_, Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//                return false;
-//            }
-//
-//            @Override
-//            public void onTouchEvent(RecyclerView rv, MotionEvent e) {
-//
-//            }
-//
-//            @Override
-//            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-//
-//            }
-//        });
-//        NotificationRecycler.setAdapter(adapter);
         return view;
     }
 
     public void setupViewPager(ViewPager viewPager){
-        ContactsFragment.Adapter adapter = new ContactsFragment.Adapter(getChildFragmentManager());
-        adapter.addFragment(new CustomersContactFragment(), "Customers");
-        adapter.addFragment(new StaffContactFragment(), "Staff");
+        NotificationsFragment.Adapter adapter = new NotificationsFragment.Adapter(getChildFragmentManager());
+        adapter.addFragment(new PendingFragment(), "Pending");
+        adapter.addFragment(new ActiveFragment(), "Active");
+        adapter.addFragment(new CompletedFragment(), "Completed");
+        adapter.addFragment(new CancelledFragment(), "Cancelled");
         viewPager.setAdapter(adapter);
     }
 

@@ -176,65 +176,10 @@
     </LinearLayout>
         </android.support.v7.widget.CardView>
 
-        <android.support.v7.widget.CardView
-            app:cardElevation="3dp"
-            android:visibility="gone"
-            app:cardCornerRadius="0dp"
-            android:background="#fff"
-            android:clipChildren="false"
-            android:id="@+id/analytics_card_view"
-            android:layout_below="@id/achievements_card_view"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="250sp">
-
-            <RelativeLayout
-                android:background="#fff"
-                android:id="@+id/analytics_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:id="@+id/analytics__"
-                    android:layout_marginTop="10dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/analytics_image"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_analytics"/>
-                    <TextView
-                        android:layout_toEndOf="@id/analytics_image"
-                        android:layout_width="wrap_content"
-                        android:textSize="17sp"
-                        android:fontFamily="@font/raleway_"
-                        android:textColor="#000"
-                        android:id="@+id/analytics_"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="Analytics"/>
-
-                </RelativeLayout>
-                <com.jjoe64.graphview.GraphView
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:id="@+id/weekly_analytics"
-                    android:layout_below="@id/analytics__"
-                    android:layout_width="match_parent"
-                    android:layout_height="195dp" />
-
-            </RelativeLayout>
-
-        </android.support.v7.widget.CardView>
-
             <android.support.v7.widget.CardView
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:layout_below="@id/analytics_card_view"
+                android:layout_below="@id/achievements_card_view"
                 android:id="@+id/overall_rating_card_view"
                 android:layout_width="match_parent"
                 app:cardElevation="3dp"
@@ -309,64 +254,6 @@
 
             </android.support.v7.widget.CardView>
 
-            <android.support.v7.widget.CardView
-                app:cardElevation="3dp"
-                app:cardCornerRadius="0dp"
-                android:background="#fff"
-                android:clipChildren="false"
-                android:id="@+id/reviews_card_view"
-                android:layout_below="@id/overall_rating_card_view"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:background="#fff"
-                    android:id="@+id/reviews_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <RelativeLayout
-                        android:layout_marginTop="10dp"
-                        android:id="@+id/review_layout_"
-                        android:layout_centerHorizontal="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:id="@+id/reviews_image"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/ic_good_review"/>
-                        <TextView
-                            android:layout_toEndOf="@id/reviews_image"
-                            android:layout_width="wrap_content"
-                            android:textSize="17sp"
-                            android:fontFamily="@font/raleway_"
-                            android:textColor="#000"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:text="Customer Reviews"/>
-
-                    </RelativeLayout>
-
-                    <android.support.v7.widget.RecyclerView
-                        android:layout_marginStart="5sp"
-                        android:layout_marginEnd="5sp"
-                        android:layout_marginTop="10sp"
-                        android:nestedScrollingEnabled="false"
-                        android:layout_below="@id/review_layout_"
-                        android:id="@+id/post_and_reviews_recycler"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                    </android.support.v7.widget.RecyclerView>
-
-
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
 
         </RelativeLayout>
 

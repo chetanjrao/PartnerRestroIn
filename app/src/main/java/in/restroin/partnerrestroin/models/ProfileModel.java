@@ -7,18 +7,9 @@ package in.restroin.partnerrestroin.models;
 import android.net.Uri;
 
 public class ProfileModel {
-    private String name, mobile, image, partner_id, username;
-
-    public ProfileModel(String name, String mobile, String image, String partner_id, String username) {
-        this.name = name;
-        this.mobile = mobile;
-        this.image = image;
-        this.partner_id = partner_id;
-        this.username = username;
-    }
+    private String name, mobile, image, partner_id, username, restaurant_id;
 
     public String getName() {
-
         return name;
     }
 
@@ -56,5 +47,23 @@ public class ProfileModel {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getRestaurant_id() {
+        return restaurant_id;
+    }
+
+    public void setRestaurant_id(String restaurant_id) {
+        this.restaurant_id = restaurant_id;
+    }
+
+    public ProfileModel(String name, String mobile, String image, String partner_id, String username, String restaurant_id) {
+
+        this.name = name;
+        this.mobile = mobile;
+        this.image = image;
+        this.partner_id = partner_id;
+        this.username = username;
+        this.restaurant_id = restaurant_id;
     }
 }

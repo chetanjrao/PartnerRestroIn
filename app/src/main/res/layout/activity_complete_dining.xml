@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (c) 2018. An change in this code must be done under my supervision and any misuse my lead to legal actions
-  -->
-
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BookingActivity">
+    tools:context=".CompleteDining">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -17,16 +13,15 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
+            app:title="Complete the Booking"
+            app:subtitle="Booking ID: #3"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:title="Booking Details"
-            app:subtitle="Booking ID: #3"
-            app:popupTheme="@style/AppTheme.PopupOverlay" >
-
-        </android.support.v7.widget.Toolbar>
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_booking" />
+    <include layout="@layout/content_complete_dining" />
+
 </android.support.design.widget.CoordinatorLayout>

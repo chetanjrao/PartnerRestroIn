@@ -44,8 +44,10 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
         holder.notification_id.setText("Booking ID: #" + notifications.get(position).getBooking_id());
         holder.notification.setText(notifications.get(position).getNotification_text());
         holder.notification_phase.setText(notifications.get(position).getNotification_type());
-        if(notifications.get(position).getNotification_type().equals("B")){
+        if(notifications.get(position).getNotification_type().equals("A") || notifications.get(position).getNotification_type().equals("C")){
             holder.notification_phase.setBackgroundResource(R.drawable.layout_circular_background);
+        }else if(notifications.get(position).getNotification_type().equals("P")){
+            holder.notification_phase.setBackgroundResource(R.drawable.layout_circular_background_yellow);
         } else {
             holder.notification_phase.setBackgroundResource(R.drawable.layout_circular_background_red);
         }

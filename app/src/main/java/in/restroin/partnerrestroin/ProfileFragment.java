@@ -1,5 +1,6 @@
 package in.restroin.partnerrestroin;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.net.Uri;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,16 +45,29 @@ public class ProfileFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         //TODO: Call the object for the profile model using the partners id and the access key given in the shared preferences
         getProfileDetails(new SavedPreferences().getApiKey(view.getContext()), new SavedPreferences().getPartnerID(view.getContext()), view);
-        SwitchCompat switchCompat = (SwitchCompat) view.findViewById(R.id.status_restaurant_switch);
-        if(switchCompat.isChecked()){
-            switchCompat.setThumbTintList(ColorStateList.valueOf(Color.GREEN));
-            switchCompat.setTrackResource(R.color.colorPrimary);
-        }
+        //SignOut(view);
+        RelativeLayout logout = (RelativeLayout) view.findViewById(R.id.log_out);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SavedPreferences savedPreferences = new SavedPreferences();
+                savedPreferences.removeSharedPreferences(v.getContext());
+                getActivity().finish();
+            }
+        });
+        RelativeLayout relativeLayout = (RelativeLayout) view.findViewById(R.id.report_issue);
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), CouponsActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
 
     }

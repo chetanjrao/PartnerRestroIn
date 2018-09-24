@@ -83,10 +83,11 @@ public class LoginActivity extends AppCompatActivity {
                     String message = response.body().getMessage();
                     String error_code = response.body().getError_code();
                     String partner_id = response.body().getPartner_id();
+                    String restaurant_id = response.body().getRestaurant_id();
                     Log.d("AuthLogging", "Access Token: " + access_token + " Message: " + message);
                     if(access_token != null && error_code == null){
                         SavedPreferences preferences = new SavedPreferences();
-                        preferences.setSharedPreferences(LoginActivity.this, username, password, access_token, partner_id);
+                        preferences.setSharedPreferences(LoginActivity.this, username, password, access_token, partner_id, restaurant_id);
                         Intent goToDashBoard = new Intent(LoginActivity.this, AnalyticsActivity.class);
                         startActivity(goToDashBoard);
                     } else if (access_token != null && error_code.equals("102")){

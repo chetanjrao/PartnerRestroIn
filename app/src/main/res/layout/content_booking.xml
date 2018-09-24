@@ -57,6 +57,7 @@
                     android:layout_margin="10dp"
                     android:text="Chethan Jagannatha Kulkarni"
                     android:textSize="17sp"
+                    android:id="@+id/guest_name"
                     android:fontFamily="@font/raleway_"
                     android:textColor="#000"
                     android:textStyle="bold"
@@ -121,7 +122,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:fontFamily="@font/raleway_"
-                        android:text="Booking OTP: "
+                        android:text="Booking Coupon: "
                         android:textSize="17sp"
                         android:textColor="#000"
                         android:id="@+id/booking_otp_text"
@@ -130,11 +131,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:fontFamily="@font/raleway_"
-                        android:text="25589"
+                        android:text="Chill10"
                         android:textStyle="bold"
                         android:textSize="17sp"
                         android:layout_toEndOf="@id/booking_otp_text"
-                        android:id="@+id/booking_otp"
+                        android:id="@+id/booking_coupoun"
                         android:textColor="#000"
                         android:layout_height="wrap_content" />
 
@@ -150,7 +151,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:fontFamily="@font/raleway_"
-                        android:text="Booking Slot: "
+                        android:text="Arrival Date &amp; Time: "
                         android:textSize="17sp"
                         android:textColor="#000"
                         android:id="@+id/booking_slot_text"
@@ -319,6 +320,7 @@
             <RelativeLayout
                 android:layout_weight="1"
                 android:layout_width="0dp"
+                android:id="@+id/cancel_booking_full_layout"
                 android:clickable="true"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:focusable="true"
@@ -352,7 +354,7 @@
                 android:clickable="true"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:focusable="true"
-
+                android:id="@+id/confirm_booking_full_layout"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent">

@@ -1,14 +1,14 @@
 package in.restroin.partnerrestroin.models;
 
 public class NotificationsModel {
-    private int booking_id;
+    private String booking_id;
     private String notification_text, notification_type;
 
-    public int getBooking_id() {
+    public String getBooking_id() {
         return booking_id;
     }
 
-    public void setBooking_id(int booking_id) {
+    public void setBooking_id(String booking_id) {
         this.booking_id = booking_id;
     }
 
@@ -28,7 +28,7 @@ public class NotificationsModel {
         this.notification_type = notification_type;
     }
 
-    public NotificationsModel(int booking_id, String notification_text, String notification_type) {
+    public NotificationsModel(String booking_id, String notification_text, String notification_type) {
         this.booking_id = booking_id;
         this.notification_text = notification_text;
         this.notification_type = notification_type;

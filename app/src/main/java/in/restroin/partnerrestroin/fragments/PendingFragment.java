@@ -16,16 +16,21 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import in.restroin.partnerrestroin.BookingActivity;
-import in.restroin.partnerrestroin.CompleteDining;
 import in.restroin.partnerrestroin.R;
 import in.restroin.partnerrestroin.adapters.NotificationsAdapter;
 import in.restroin.partnerrestroin.interfaces.PartnerRestroINClient;
 import in.restroin.partnerrestroin.models.BookingModel;
 import in.restroin.partnerrestroin.models.NotificationsModel;
+import in.restroin.partnerrestroin.models.RestaurantProfileModel;
+import in.restroin.partnerrestroin.platforms.BookingsDeserializer;
+import in.restroin.partnerrestroin.platforms.RestaurantDeserializer;
 import in.restroin.partnerrestroin.utils.SavedPreferences;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -35,35 +40,35 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ActiveFragment extends Fragment {
+public class PendingFragment extends Fragment {
     private final String API_BASE_URL = "https://www.restroin.in/developers/api/";
     private HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
     private OkHttpClient.Builder httpClient = new OkHttpClient.Builder().addInterceptor(loggingInterceptor);
     private Retrofit.Builder builder = new Retrofit.Builder().client(httpClient.build()).baseUrl(API_BASE_URL).addConverterFactory(GsonConverterFactory.create());
     private Retrofit retrofit = builder.build();
-    public ActiveFragment(){
+    public PendingFragment(){
 
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_active_bookings, container, false);
+        View view = inflater.inflate(R.layout.fragment_pending_bookings, container, false);
         RecyclerView NotificationRecycler = (RecyclerView) view.findViewById(R.id.bookings_recyclerView);
         addBookingData(NotificationRecycler, new SavedPreferences().getApiKey(view.getContext()), new SavedPreferences().getPartnerID(view.getContext()), new SavedPreferences().getRestaurantID(view.getContext()));
         return view;
     }
 
     private void addBookingData(final RecyclerView recyclerView, String access_key, String partner_id, String restaurant){
-        final List<NotificationsModel> pendingBookings = new ArrayList<>();
         PartnerRestroINClient bookingClient = retrofit.create(PartnerRestroINClient.class);
-        Call<List<BookingModel>> call = bookingClient.getBookingData(access_key, partner_id, restaurant, "Confirm");
+        Call<List<BookingModel>> call = bookingClient.getBookingData(access_key, partner_id, restaurant, "Pending");
         call.enqueue(new Callback<List<BookingModel>>() {
             @Override
             public void onResponse(Call<List<BookingModel>> call, final Response<List<BookingModel>> response) {
+                List<NotificationsModel> pendingBookings = new ArrayList<>();
                 for (int i=0; i < response.body().size(); i++){
-                    String body = "<b>" + response.body().get(i).getGuest_name() + "</b> 's Dining is Active. Click here to complete the Dining.";
-                    pendingBookings.add(new NotificationsModel(response.body().get(i).getBooking_id(), Html.fromHtml(body).toString(), "A"));
+                    String body = "<b>" + response.body().get(i).getGuest_name() + "</b> 's Booking is Pending. Click here to confirm the booking.";
+                    pendingBookings.add(new NotificationsModel(response.body().get(i).getBooking_id(),Html.fromHtml(body).toString() , "P"));
                 }
                 NotificationsAdapter adapter = new NotificationsAdapter(pendingBookings);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -105,10 +110,10 @@ public class ActiveFragment extends Fragment {
                     public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
                         View childView = rv.findChildViewUnder(e.getX(), e.getY());
                         if(childView != null && gestureDetector.onTouchEvent(e)) {
-                                Intent go_to_confirm = new Intent(getActivity(), CompleteDining.class);
-                                go_to_confirm.putExtra("booking_id", response.body().get(rv.getChildAdapterPosition(childView)).getBooking_id());
-                                go_to_confirm.putExtra("booking_step", "Completed");
-                                startActivity(go_to_confirm);
+                            Intent go_to_confirm = new Intent(getActivity(), BookingActivity.class);
+                            go_to_confirm.putExtra("booking_id", response.body().get(rv.getChildAdapterPosition(childView)).getBooking_id());
+                            go_to_confirm.putExtra("booking_status", "Confirm");
+                            startActivity(go_to_confirm);
                         }
                         return false;
                     }
