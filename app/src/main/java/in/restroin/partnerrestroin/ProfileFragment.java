@@ -7,12 +7,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,6 +51,12 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         //TODO: Call the object for the profile model using the partners id and the access key given in the shared preferences
+        SwipeRefreshLayout dashboardRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.profile_swipe_layout);
+        dashboardRefreshLayout.setVisibility(View.GONE);
+        TextView error_text = (TextView) view.findViewById(R.id.error_text_view);
+        error_text.setVisibility(View.GONE);
+        ProgressBar loadingProgressBar = (ProgressBar) view.findViewById(R.id.profileProgressBar);
+        loadingProgressBar.setVisibility(View.VISIBLE);
         getProfileDetails(new SavedPreferences().getApiKey(view.getContext()), new SavedPreferences().getPartnerID(view.getContext()), view);
         //SignOut(view);
         RelativeLayout logout = (RelativeLayout) view.findViewById(R.id.log_out);
@@ -78,6 +86,9 @@ public class ProfileFragment extends Fragment {
         profileModelCall.enqueue(new Callback<ProfileModel>() {
             @Override
             public void onResponse(@NonNull Call<ProfileModel> call,@NonNull Response<ProfileModel> response) {
+                view.findViewById(R.id.profile_swipe_layout).setVisibility(View.VISIBLE);
+                view.findViewById(R.id.profileProgressBar).setVisibility(View.GONE);
+                view.findViewById(R.id.error_text_view).setVisibility(View.GONE);
                 String profile_username = response.body().getUsername();
                 String profile_mobile = response.body().getMobile();
                 String profile_name = response.body().getName();
@@ -95,7 +106,9 @@ public class ProfileFragment extends Fragment {
 
             @Override
             public void onFailure(@NonNull Call<ProfileModel> call,@NonNull Throwable t) {
-
+                view.findViewById(R.id.profile_swipe_layout).setVisibility(View.GONE);
+                view.findViewById(R.id.profileProgressBar).setVisibility(View.GONE);
+                view.findViewById(R.id.error_text_view).setVisibility(View.VISIBLE);
             }
         });
     }

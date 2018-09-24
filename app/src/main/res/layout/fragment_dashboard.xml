@@ -2,21 +2,20 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".DashboardFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
     <ProgressBar
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
         android:id="@+id/dashboardProgressBar"
-        android:layout_width="20dp"
+        android:layout_width="30dp"
+        android:layout_centerInParent="true"
         android:foregroundTint="@color/colorPrimary"
         android:indeterminateTint="@color/colorPrimary"
-        android:layout_height="20dp" />
+        android:layout_height="30dp" />
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/dashboard_swipe_refresh_layout"

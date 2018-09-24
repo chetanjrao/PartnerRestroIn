@@ -6,8 +6,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ProfileFragment">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:layout_width="30dp"
+            android:id="@+id/profileProgressBar"
+            android:layout_centerInParent="true"
+            android:indeterminateTint="@color/colorPrimary"
+            android:layout_height="30dp" />
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:paddingTop="20dp"
+            android:layout_width="match_parent"
+            android:id="@+id/profile_swipe_layout"
+            android:layout_height="wrap_content">
+
     <android.support.v4.widget.NestedScrollView
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -120,40 +136,12 @@
 
             </android.support.v7.widget.CardView>
 
+
+
+
             <android.support.v7.widget.CardView
                 app:cardCornerRadius="0dp"
                 android:layout_below="@id/profile_details_card"
-                app:cardElevation="1dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:id="@+id/restaurants_incharge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:textColor="#000"
-                        android:id="@+id/restaurant_incharge_text"
-                        android:text="Restaurants Claimed"
-                        android:textSize="17sp"
-                        android:layout_margin="10dp"
-                        android:fontFamily="@font/raleway_"
-                        android:layout_centerHorizontal="true"
-                        android:layout_height="wrap_content" />
-
-
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
-
-
-            <android.support.v7.widget.CardView
-                app:cardCornerRadius="0dp"
-                android:layout_below="@id/restaurants_incharge"
                 app:cardElevation="1dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
@@ -281,12 +269,22 @@
 
 
     </android.support.v4.widget.NestedScrollView>
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="50dp"
-        android:layout_margin="10dp"
-        android:src="@drawable/ic_edit"
-        android:layout_gravity="bottom|end"
-        android:id="@+id/add_restaurants_button"
-        android:layout_height="50dp" />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="16sp"
+            android:id="@+id/error_text_view"
+            android:layout_centerInParent="true"
+            android:textAlignment="center"
+            android:layout_margin="10dp"
+            android:text="Something went wrong. Kindly check your internet connection :-("
+            android:textColor="#000"
+            android:fontFamily="@font/raleway_"
+            android:layout_height="wrap_content" />
+
+
+    </RelativeLayout>
 
 </FrameLayout>

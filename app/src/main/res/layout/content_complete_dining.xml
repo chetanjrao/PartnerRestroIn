@@ -10,6 +10,18 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ProgressBar
+            android:layout_width="30dp"
+            android:id="@+id/billAmountProgressBar"
+            android:indeterminateTint="@color/colorPrimary"
+            android:layout_centerInParent="true"
+            android:layout_height="30dp" />
+
+    <RelativeLayout
+        android:id="@+id/billAmountLayout"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <android.support.design.widget.TextInputLayout
@@ -28,11 +40,19 @@
         </android.support.design.widget.TextInputLayout>
 
         <Button
+            android:layout_marginTop="20dp"
+            android:layout_centerInParent="true"
             android:id="@+id/complete_the_booking_button"
             android:layout_below="@id/bill_amount_layout"
             android:layout_width="wrap_content"
+            android:background="@drawable/layout_button_background"
+            android:padding="10dp"
+            android:textColor="#fff"
+            android:fontFamily="@font/raleway_"
             android:text="Complete the Booking"
             android:layout_height="wrap_content" />
+
+    </RelativeLayout>
 
     </RelativeLayout>
 

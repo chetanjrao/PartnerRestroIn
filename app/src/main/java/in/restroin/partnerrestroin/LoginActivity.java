@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +21,7 @@ import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.util.Objects;
 
+import butterknife.BindView;
 import in.restroin.partnerrestroin.interfaces.LoginClient;
 import in.restroin.partnerrestroin.interfaces.PartnerRestroINClient;
 import in.restroin.partnerrestroin.models.AuthenModel;
@@ -45,12 +48,18 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         final Button signin = (Button) findViewById(R.id.sign_in);
+        final CardView loginCardView = (CardView) findViewById(R.id.loginCardView);
+        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.loginProgressBar);
+        progressBar.setVisibility(View.GONE);
+        loginCardView.setVisibility(View.VISIBLE);
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditText username = (EditText) findViewById(R.id.username);
                 EditText password = (EditText) findViewById(R.id.password);
                 if(!TextUtils.isEmpty(username.getText().toString()) && !TextUtils.isEmpty(password.getText().toString())){
+                    progressBar.setVisibility(View.VISIBLE);
+                    loginCardView.setVisibility(View.GONE);
                     ProcessAuthentication(username.getText().toString(), password.getText().toString());
                 } else {
                     if(TextUtils.isEmpty(username.getText().toString())){
@@ -65,6 +74,10 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
+        final CardView loginCardView = (CardView) findViewById(R.id.loginCardView);
+        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.loginProgressBar);
+        progressBar.setVisibility(View.GONE);
+        loginCardView.setVisibility(View.VISIBLE);
         String access_token = new SavedPreferences().getApiKey(LoginActivity.this);
         if(access_token != null){
             Intent goToDashBoard = new Intent(LoginActivity.this, AnalyticsActivity.class);
@@ -93,12 +106,23 @@ public class LoginActivity extends AppCompatActivity {
                     } else if (access_token != null && error_code.equals("102")){
                         Toast.makeText(LoginActivity.this, "Unable to assign Token", Toast.LENGTH_SHORT).show();
                     } else if(access_token == null && error_code.equals("401")){
+                        final CardView loginCardView = (CardView) findViewById(R.id.loginCardView);
+                        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.loginProgressBar);
+                        progressBar.setVisibility(View.GONE);
+                        progressBar.setVisibility(View.GONE);
+                        loginCardView.setVisibility(View.VISIBLE);
                         Toast.makeText(LoginActivity.this, "Invalid Login Attempt", Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<AuthenModel> call, Throwable t) {
+                    final CardView loginCardView = (CardView) findViewById(R.id.loginCardView);
+                    final ProgressBar progressBar = (ProgressBar) findViewById(R.id.loginProgressBar);
+                    progressBar.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.GONE);
+                    loginCardView.setVisibility(View.VISIBLE);
+                    Toast.makeText(LoginActivity.this, "Something went wrong. Check your internet connection :-( ", Toast.LENGTH_SHORT).show();
                     Log.e("AuthLogging", "Error: The authentication call seems invalid . The error is: " + t.getMessage());
                 }
             });
