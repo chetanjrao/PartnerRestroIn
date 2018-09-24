@@ -19,13 +19,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.io.IOException;
 
 import in.restroin.partnerrestroin.interfaces.PartnerRestroINClient;
 import in.restroin.partnerrestroin.models.MessageModel;
+import in.restroin.partnerrestroin.utils.PartnerMessagingService;
 import in.restroin.partnerrestroin.utils.SavedPreferences;
 import in.restroin.partnerrestroin.utils.ServiceGenerator;
 import okhttp3.OkHttpClient;
@@ -39,6 +42,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class AnalyticsActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
+    private String token;
     private LayoutInflater inflater;
 
     private final String API_BASE_URL = "https://www.restroin.in/developers/api/";
@@ -54,8 +58,9 @@ public class AnalyticsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_analytics);
         mTextMessage = (TextView) findViewById(R.id.message);
         loadfragment(new DashboardFragment());
+        token = new PartnerMessagingService().getToken();
         if(new SavedPreferences().device_uid_get(AnalyticsActivity.this) == null){
-            setDeviceUID(new SavedPreferences().getApiKey(AnalyticsActivity.this), FirebaseInstanceId.getInstance().getToken());
+            setDeviceUID(new SavedPreferences().getApiKey(AnalyticsActivity.this), FirebaseInstanceId.getInstance().getToken() );
             Toast.makeText(this, "Device ID: " + FirebaseInstanceId.getInstance().getToken(), Toast.LENGTH_SHORT).show();
         }
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);

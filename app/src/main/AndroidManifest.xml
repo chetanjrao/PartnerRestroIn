@@ -41,7 +41,16 @@
             android:name=".CompleteDining"
             android:label="@string/title_activity_complete_dining"
             android:theme="@style/AppTheme" />
-        <activity android:screenOrientation="portrait" android:name=".CouponsActivity"></activity>
+        <activity android:screenOrientation="portrait" android:name=".CouponsActivity">
+
+        </activity>
+
+        <service android:name=".utils.PartnerMessagingService"
+            tools:ignore="ExportedService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

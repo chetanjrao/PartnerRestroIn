@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -27,6 +29,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import in.restroin.partnerrestroin.adapters.ReviewsAdapter;
 import in.restroin.partnerrestroin.interfaces.OnLoadMoreListener;
 import in.restroin.partnerrestroin.interfaces.PartnerRestroINClient;
@@ -56,35 +59,18 @@ public class DashboardFragment extends Fragment {
     List<ReviewsModel> reviews = new ArrayList<>();
 
     public DashboardFragment() {
-        // Required empty public constructor
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View DashBoardView =  inflater.inflate(R.layout.fragment_dashboard, container, false);
-        /*GraphView graphView = (GraphView) DashBoardView.findViewById(R.id.weekly_analytics);
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>( new DataPoint[]{
-                new DataPoint(1.0, 0),
-                new DataPoint(2.0, 10),
-                new DataPoint(3.0, 100),
-                new DataPoint(4.0, 78),
-        });
-        series.setDrawDataPoints(true);
-        series.setDataPointsRadius(10);
-        series.setThickness(3);
-        graphView.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.NONE);
-        graphView.getGridLabelRenderer().setHorizontalLabelsVisible(false);
-        graphView.getGridLabelRenderer().setTextSize(25f);
-        graphView.getViewport().setXAxisBoundsManual(true);
-        graphView.getViewport().setYAxisBoundsManual(true);
-        graphView.getViewport().setXAxisBoundsManual(true);
-        graphView.getViewport().setYAxisBoundsManual(true);
-        graphView.getViewport().setMaxX(4);
-        graphView.getViewport().setMinX(1);
-        graphView.getViewport().setMinY(0);
-        graphView.getViewport().setMaxY(100);
-        graphView.addSeries(series);*/
+        SwipeRefreshLayout dashboardRefreshLayout = (SwipeRefreshLayout) DashBoardView.findViewById(R.id.dashboard_swipe_refresh_layout);
+        dashboardRefreshLayout.setVisibility(View.GONE);
+        TextView error_text = (TextView) DashBoardView.findViewById(R.id.error_text_view);
+        error_text.setVisibility(View.GONE);
+        ProgressBar loadingProgressBar = (ProgressBar) DashBoardView.findViewById(R.id.dashboardProgressBar);
+        loadingProgressBar.setVisibility(View.VISIBLE);
         getProfileDetails(new SavedPreferences().getApiKey(DashBoardView.getContext()), new SavedPreferences().getPartnerID(DashBoardView.getContext()), DashBoardView);
 //        final RecyclerView reviews_recycler = (RecyclerView)DashBoardView.findViewById(R.id.post_and_reviews_recycler);
 //        reviews_recycler.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -104,6 +90,9 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onResponse(@NonNull Call<RestaurantProfileModel> call,@NonNull Response<RestaurantProfileModel> response) {
                 assert response.body() != null;
+                view.findViewById(R.id.dashboard_swipe_refresh_layout).setVisibility(View.VISIBLE);
+                view.findViewById(R.id.error_text_view).setVisibility(View.GONE);
+                view.findViewById(R.id.dashboardProgressBar).setVisibility(View.GONE);
                 String restaurant_rating = response.body().getRestaurant_rating();
                 String restaurant_earned = response.body().getTotal_earned();
                 String restaurant_bookings = response.body().getTotal_bookings();
@@ -126,8 +115,11 @@ public class DashboardFragment extends Fragment {
 
             @Override
             public void onFailure(@NonNull Call<RestaurantProfileModel> call,@NonNull Throwable t) {
-
+                view.findViewById(R.id.dashboard_swipe_refresh_layout).setVisibility(View.GONE);
+                view.findViewById(R.id.error_text_view).setVisibility(View.VISIBLE);
+                view.findViewById(R.id.dashboardProgressBar).setVisibility(View.GONE);
             }
         });
     }
+
 }

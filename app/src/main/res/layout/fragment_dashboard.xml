@@ -6,6 +6,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".DashboardFragment">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <ProgressBar
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:id="@+id/dashboardProgressBar"
+        android:layout_width="20dp"
+        android:foregroundTint="@color/colorPrimary"
+        android:indeterminateTint="@color/colorPrimary"
+        android:layout_height="20dp" />
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/dashboard_swipe_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -258,5 +275,24 @@
         </RelativeLayout>
 
     </android.support.v4.widget.NestedScrollView>
+
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="16sp"
+            android:id="@+id/error_text_view"
+            android:layout_centerInParent="true"
+            android:textAlignment="center"
+            android:layout_margin="10dp"
+            android:text="Something went wrong. Kindly check your internet connection :-("
+            android:textColor="#000"
+            android:fontFamily="@font/raleway_"
+            android:layout_height="wrap_content" />
+
+
+    </RelativeLayout>
+
 
 </FrameLayout>
