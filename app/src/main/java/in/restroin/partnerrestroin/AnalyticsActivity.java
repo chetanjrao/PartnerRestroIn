@@ -45,7 +45,7 @@ public class AnalyticsActivity extends AppCompatActivity {
     private String token;
     private LayoutInflater inflater;
 
-    private final String API_BASE_URL = "https://www.restroin.in/developers/api/";
+    private final String API_BASE_URL = "https://www.restroin.in/developers/api/v2/";
     private HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
     private OkHttpClient.Builder httpClient = new OkHttpClient.Builder().addInterceptor(loggingInterceptor);
     private Retrofit.Builder builder = new Retrofit.Builder().baseUrl(API_BASE_URL).client(httpClient.build()).addConverterFactory(GsonConverterFactory.create());
