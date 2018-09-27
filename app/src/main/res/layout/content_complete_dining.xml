@@ -32,6 +32,8 @@
             <EditText
                 android:inputType="numberDecimal"
                 android:id="@+id/bill_amount"
+                android:foregroundTint="@color/colorPrimary"
+                android:theme="@style/ProgressTheme"
                 android:layout_width="match_parent"
                 android:hint="Enter the bill amount (in Rs.)"
                 android:fontFamily="@font/raleway_"

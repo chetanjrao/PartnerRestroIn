@@ -1,16 +1,10 @@
 package in.restroin.partnerrestroin.models;
 
 public class CouponsModel {
-    private String coupon_id, coupon_code, description;
+    private String coupon_id, coupon_code, description, coupon_image;
 
     public String getCoupon_id() {
         return coupon_id;
-    }
-
-    public CouponsModel(String coupon_id, String coupon_code, String description) {
-        this.coupon_id = coupon_id;
-        this.coupon_code = coupon_code;
-        this.description = description;
     }
 
     public void setCoupon_id(String coupon_id) {
@@ -31,5 +25,21 @@ public class CouponsModel {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCoupon_image() {
+        return coupon_image;
+    }
+
+    public void setCoupon_image(String coupon_image) {
+        this.coupon_image = coupon_image;
+    }
+
+    public CouponsModel(String coupon_id, String coupon_code, String description, String coupon_image) {
+
+        this.coupon_id = coupon_id;
+        this.coupon_code = coupon_code;
+        this.description = description;
+        this.coupon_image = coupon_image;
     }
 }

@@ -31,7 +31,8 @@ import in.restroin.partnerrestroin.models.NotificationsModel;
 
 public class NotificationsFragment extends Fragment {
 
-
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     List<NotificationsModel> notifications = new ArrayList<>();
 
@@ -39,28 +40,50 @@ public class NotificationsFragment extends Fragment {
         // Required empty public constructor
     }
 
+    TabLayout.OnTabSelectedListener onTabSelectedListener(final ViewPager viewPager){
+        return new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        };
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_notifications, container, false);
-        ViewPager viewPager = (ViewPager) view.findViewById(R.id.bookings_view_pager);
+        viewPager = (ViewPager) view.findViewById(R.id.bookings_view_pager);
+        tabLayout = (TabLayout) view.findViewById(R.id.bookings_tab_layout);
         setupViewPager(viewPager);
-        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.bookings_tab_layout);
         tabLayout.setupWithViewPager(viewPager);
+        tabLayout.addOnTabSelectedListener(onTabSelectedListener(viewPager));
         return view;
     }
 
     public void setupViewPager(ViewPager viewPager){
-        NotificationsFragment.Adapter adapter = new NotificationsFragment.Adapter(getChildFragmentManager());
+        Adapter adapter = new Adapter(getChildFragmentManager());
         adapter.addFragment(new PendingFragment(), "Pending");
         adapter.addFragment(new ActiveFragment(), "Active");
         adapter.addFragment(new CompletedFragment(), "Completed");
         adapter.addFragment(new CancelledFragment(), "Cancelled");
         viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        onTabSelectedListener(viewPager);
     }
 
-    static class Adapter extends FragmentPagerAdapter {
 
+    class Adapter extends FragmentPagerAdapter {
         List<Fragment> fragments = new ArrayList<>();
         List<String> fragament_titles =new ArrayList<>();
 

@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,11 +51,16 @@ public class ActiveFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_active_bookings, container, false);
         RecyclerView NotificationRecycler = (RecyclerView) view.findViewById(R.id.bookings_recyclerView);
-        addBookingData(NotificationRecycler, new SavedPreferences().getApiKey(view.getContext()), new SavedPreferences().getPartnerID(view.getContext()), new SavedPreferences().getRestaurantID(view.getContext()));
+        NotificationRecycler.setVisibility(View.GONE);
+        ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
+        TextView textView = (TextView) view.findViewById(R.id.error_text_view);
+        textView.setVisibility(View.GONE);
+        addBookingData(NotificationRecycler, new SavedPreferences().getApiKey(view.getContext()), new SavedPreferences().getPartnerID(view.getContext()), new SavedPreferences().getRestaurantID(view.getContext()), view);
         return view;
     }
 
-    private void addBookingData(final RecyclerView recyclerView, String access_key, String partner_id, String restaurant){
+    private void addBookingData(final RecyclerView recyclerView, String access_key, String partner_id, String restaurant, final View view){
         final List<NotificationsModel> pendingBookings = new ArrayList<>();
         PartnerRestroINClient bookingClient = retrofit.create(PartnerRestroINClient.class);
         Call<List<BookingModel>> call = bookingClient.getBookingData(access_key, partner_id, restaurant, "Confirm");
@@ -68,6 +74,12 @@ public class ActiveFragment extends Fragment {
                 NotificationsAdapter adapter = new NotificationsAdapter(pendingBookings);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
                 recyclerView.setLayoutManager(layoutManager);
+                RecyclerView NotificationRecycler = (RecyclerView) view.findViewById(R.id.bookings_recyclerView);
+                NotificationRecycler.setVisibility(View.VISIBLE);
+                ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
+                progressBar.setVisibility(View.GONE);
+                TextView textView = (TextView) view.findViewById(R.id.error_text_view);
+                textView.setVisibility(View.GONE);
                 final GestureDetector gestureDetector = new GestureDetector(getContext(), new GestureDetector.OnGestureListener() {
                     @Override
                     public boolean onDown(MotionEvent motionEvent) {
@@ -128,7 +140,12 @@ public class ActiveFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<BookingModel>> call, Throwable t) {
-
+                RecyclerView NotificationRecycler = (RecyclerView) view.findViewById(R.id.bookings_recyclerView);
+                NotificationRecycler.setVisibility(View.GONE);
+                ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
+                progressBar.setVisibility(View.GONE);
+                TextView textView = (TextView) view.findViewById(R.id.error_text_view);
+                textView.setVisibility(View.VISIBLE);
             }
         });
     }
