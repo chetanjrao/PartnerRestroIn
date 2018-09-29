@@ -1,10 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView android:layout_marginStart="5dp"
     android:layout_marginEnd="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
     app:cardCornerRadius="2dp"
+    android:id="@+id/cardLayoutCoupon"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="200dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/coupon_image"
+        android:layout_width="match_parent"
+        android:scaleType="fitXY"
+        android:src="@mipmap/pp"
+        android:layout_height="match_parent" />
+
+    <com.hanks.library.AnimateCheckBox
+        android:layout_width="40dp"
+        android:id="@+id/coupon_check_box"
+        app:lineWidth="1.2dp"
+        android:padding="6dp"
+        app:checkedColor="#f00"
+        android:layout_height="40dp" />
+
+<RelativeLayout
+    android:layout_marginBottom="-6dp"
+    android:layout_marginStart="-3dp"
+    android:layout_marginEnd="-3dp"
+    android:layout_alignParentBottom="true"
+    android:background="@drawable/layout_dark_background"
+    android:layout_width="match_parent"
+    android:layout_height="85dp">
+    
+   <RelativeLayout
+       android:layout_centerHorizontal="true"
+       android:layout_centerInParent="true"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:text="Chill 20"
+           android:layout_centerHorizontal="true"
+           android:fontFamily="@font/raleway_"
+           android:textSize="20sp"
+           android:textColor="#fff"
+           android:textStyle="bold"
+           android:id="@+id/coupon_name"
+           android:layout_height="wrap_content" />
+
+       <TextView
+           android:layout_marginStart="5dp"
+           android:layout_marginEnd="5dp"
+           android:layout_width="wrap_content"
+           android:id="@+id/coupon_description"
+           android:textColor="#fff"
+           android:layout_centerHorizontal="true"
+           android:fontFamily="@font/raleway_"
+           android:textSize="17sp"
+           android:textAlignment="center"
+           android:text="Get 20% off on bill amount more than Rs. 200/-"
+           android:layout_below="@+id/coupon_name"
+           android:layout_height="wrap_content" />
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:id="@+id/coupon_id"
+           android:visibility="invisible"
+           android:layout_height="wrap_content" />
+
+   </RelativeLayout>
+
+    
+</RelativeLayout>
+
+</RelativeLayout>
 </android.support.v7.widget.CardView>

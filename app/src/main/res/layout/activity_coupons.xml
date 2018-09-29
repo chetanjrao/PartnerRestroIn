@@ -27,6 +27,7 @@
             android:layout_width="wrap_content"
             android:textColor="#000"
             android:textSize="22sp"
+            android:layout_marginTop="20dp"
             android:id="@+id/selectYourCouponsText"
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/raleway_"
@@ -47,12 +48,18 @@
     <Button
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:text="Update Coupons"
+        android:background="@drawable/layout_button_background"
         android:id="@+id/updateCoupons"
         android:layout_gravity="bottom|end"
-        android:layout_margin="5dp"
-        android:layout_height="wrap_content" />
+        android:textColor="#fff"
+        android:fontFamily="@font/raleway_"
+        android:textStyle="bold"
+        android:foreground="?attr/selectableItemBackground"
+        android:layout_marginBottom="-2dp"
+        android:layout_marginTop="5dp"
+        android:layout_height="55dp" />
 
         <TextView
             android:layout_width="wrap_content"
