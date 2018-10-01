@@ -2,6 +2,7 @@ package in.restroin.partnerrestroin.models;
 
 public class CouponsModel {
     private String coupon_id, coupon_code, description, coupon_image;
+    private boolean isChecked;
 
     public String getCoupon_id() {
         return coupon_id;
@@ -9,6 +10,14 @@ public class CouponsModel {
 
     public void setCoupon_id(String coupon_id) {
         this.coupon_id = coupon_id;
+    }
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
     }
 
     public String getCoupon_code() {
@@ -36,7 +45,6 @@ public class CouponsModel {
     }
 
     public CouponsModel(String coupon_id, String coupon_code, String description, String coupon_image) {
-
         this.coupon_id = coupon_id;
         this.coupon_code = coupon_code;
         this.description = description;

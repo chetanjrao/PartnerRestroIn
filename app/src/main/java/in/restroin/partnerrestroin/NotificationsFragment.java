@@ -40,6 +40,11 @@ public class NotificationsFragment extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
     TabLayout.OnTabSelectedListener onTabSelectedListener(final ViewPager viewPager){
         return new TabLayout.OnTabSelectedListener() {
             @Override
@@ -54,7 +59,7 @@ public class NotificationsFragment extends Fragment {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
+                viewPager.setCurrentItem(tab.getPosition());
             }
         };
     }

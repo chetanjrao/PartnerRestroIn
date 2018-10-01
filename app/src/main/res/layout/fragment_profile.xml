@@ -176,47 +176,6 @@
 
                    </RelativeLayout>
 
-                   <RelativeLayout
-                       android:focusable="true"
-                       android:clickable="true"
-                       android:foreground="?attr/selectableItemBackground"
-                       android:padding="15dp"
-                       android:id="@+id/give_feedback"
-                       android:background="@drawable/layout_review_card_background"
-                       android:layout_width="match_parent"
-                       android:layout_height="50dp">
-
-                       <TextView
-                           android:text="Give Feed back"
-                           android:textSize="17sp"
-                           android:layout_centerVertical="true"
-                           android:fontFamily="@font/raleway_"
-                           android:textColor="#000"
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content" />
-
-                   </RelativeLayout>
-
-                   <RelativeLayout
-                       android:focusable="true"
-                       android:clickable="true"
-                       android:id="@+id/rate_us"
-                       android:foreground="?attr/selectableItemBackground"
-                       android:padding="15dp"
-                       android:background="@drawable/layout_review_card_background"
-                       android:layout_width="match_parent"
-                       android:layout_height="50dp">
-
-                       <TextView
-                           android:text="Rate Us on PlayStore"
-                           android:textSize="17sp"
-                           android:layout_centerVertical="true"
-                           android:fontFamily="@font/raleway_"
-                           android:textColor="#000"
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content" />
-
-                   </RelativeLayout>
 
                    <RelativeLayout
                        android:focusable="true"

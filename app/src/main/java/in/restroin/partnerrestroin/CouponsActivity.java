@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CheckedTextView;
 import android.widget.CompoundButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -57,7 +58,7 @@ public class CouponsActivity extends AppCompatActivity {
         recyclerView.setVisibility(View.GONE);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        showCoupons(recyclerView, selectedCoupons);
+        showCoupons(recyclerView);
         Button button = (Button) findViewById(R.id.updateCoupons);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +89,7 @@ public class CouponsActivity extends AppCompatActivity {
 
     }
 
-    private void showCoupons(final RecyclerView recyclerView, final List<String> selectedCoupons){
+    private void showCoupons(final RecyclerView recyclerView){
         final GestureDetector gestureDetector = new GestureDetector(CouponsActivity.this, new GestureDetector.OnGestureListener() {
             @Override
             public boolean onDown(MotionEvent motionEvent) {
@@ -128,7 +129,7 @@ public class CouponsActivity extends AppCompatActivity {
                 for(int i=0; i < response.body().size(); i++){
                     coupons.add(new CouponsModel(response.body().get(i).getCoupon_id(), response.body().get(i).getCoupon_code(), response.body().get(i).getDescription(), response.body().get(i).getCoupon_image()));
                 }
-                CouponsAdapter adapter = new CouponsAdapter(coupons);
+                final CouponsAdapter adapter = new CouponsAdapter(coupons);
                 ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
                 TextView textView = (TextView) findViewById(R.id.error_text_view);
                 progressBar.setVisibility(View.GONE);
@@ -139,19 +140,16 @@ public class CouponsActivity extends AppCompatActivity {
                     @Override
                     public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
                         final View childView = rv.findChildViewUnder(e.getX(), e.getY());
-                        if(childView != null && gestureDetector.onTouchEvent(e)) {
-                            int position = rv.getChildAdapterPosition(childView);
-                            final AnimateCheckBox checkBox = (AnimateCheckBox) rv.getChildAt(position).findViewById(R.id.coupon_check_box);
-                            final TextView coupon_id = (TextView) rv.getChildAt(position).findViewById(R.id.coupon_id);
-                            checkBox.setOnCheckedChangeListener(new AnimateCheckBox.OnCheckedChangeListener() {
+                        if(childView != null && gestureDetector.onTouchEvent(e)){
+                            final TextView coupon_id = (TextView) childView.findViewById(R.id.coupon_id);
+                            CheckBox checkBox = (CheckBox) childView.findViewById(R.id.coupon_name);
+                            checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                                 @Override
-                                public void onCheckedChanged(View buttonView, boolean isChecked) {
+                                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                                     if(isChecked){
-                                        selectedCoupons.add('"' + coupon_id.getText().toString() + '"');
-                                        Toast.makeText(CouponsActivity.this, "" + selectedCoupons.toString(), Toast.LENGTH_SHORT).show();
+                                        selectedCoupons = adapter.getSelectedCoupons();
                                     } else {
-                                        selectedCoupons.remove('"' + coupon_id.getText().toString() + '"');
-                                        Toast.makeText(CouponsActivity.this, "" + selectedCoupons.toString(), Toast.LENGTH_SHORT).show();
+                                        selectedCoupons = adapter.getSelectedCoupons();
                                     }
                                 }
                             });

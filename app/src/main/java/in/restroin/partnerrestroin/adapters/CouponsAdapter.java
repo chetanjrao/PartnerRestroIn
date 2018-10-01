@@ -8,9 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CheckedTextView;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hanks.library.AnimateCheckBox;
 import com.squareup.picasso.Callback;
@@ -21,26 +23,34 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
+import in.restroin.partnerrestroin.CouponsActivity;
 import in.restroin.partnerrestroin.R;
 import in.restroin.partnerrestroin.models.CouponsModel;
 
 public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHolder>{
     private List<CouponsModel> couponsModels = new ArrayList<>();
+    private List<String> selectedCoupons = new ArrayList<String>();
+    private int SelectedItem = 0;
+
+    public List<String> getSelectedCoupons() {
+        return selectedCoupons;
+    }
+
+
 
     public CouponsAdapter(List<CouponsModel> couponsModels) {
         this.couponsModels = couponsModels;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        AnimateCheckBox coupon_checkBox;
         CardView cardView;
-        TextView coupon_name, description, coupon_id;
+        CheckBox coupon_name;
+        TextView description, coupon_id;
         ImageView  coupon_image;
         public ViewHolder(View itemView) {
             super(itemView);
             cardView = (CardView) itemView.findViewById(R.id.cardLayoutCoupon);
-            coupon_name = (TextView) itemView.findViewById(R.id.coupon_name);
-            coupon_checkBox = (AnimateCheckBox) itemView.findViewById(R.id.coupon_check_box);
+            coupon_name = (CheckBox) itemView.findViewById(R.id.coupon_name);
             description = (TextView) itemView.findViewById(R.id.coupon_description);
             coupon_id = (TextView) itemView.findViewById(R.id.coupon_id);
             coupon_image = (ImageView) itemView.findViewById(R.id.coupon_image);
@@ -55,8 +65,11 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-        holder.coupon_checkBox.setChecked(false);
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
+//        if(selectedCoupons.size() == 0){
+//            selectedCoupons.add(couponsModels.get(0).getCoupon_id());
+//        }
+        final CouponsModel couponsModel = couponsModels.get(position);
         holder.coupon_name.setText(couponsModels.get(position).getCoupon_code());
         holder.description.setText(couponsModels.get(position).getDescription());
         holder.coupon_id.setText(couponsModels.get(position).getCoupon_id());
@@ -72,16 +85,23 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHold
 
             }
         });
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if (holder.coupon_checkBox.isChecked()){
-                    holder.coupon_checkBox.setChecked(false);
+            public void onClick(View v) {
+                if(selectedCoupons.contains(couponsModel.getCoupon_id())){
+                    selectedCoupons.remove(couponsModel.getCoupon_id());
+                    holder.coupon_name.setChecked(false);
                 } else {
-                    holder.coupon_checkBox.setChecked(false);
+                    holder.coupon_name.setChecked(true);
+                    selectedCoupons.add(couponsModel.getCoupon_id());
                 }
             }
         });
+        if(selectedCoupons.contains(couponsModel.getCoupon_id())){
+            holder.coupon_name.setChecked(true);
+        } else {
+            holder.coupon_name.setChecked(false);
+        }
     }
 
     @Override

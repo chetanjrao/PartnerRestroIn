@@ -90,4 +90,12 @@ public interface PartnerRestroINClient {
             @Field("partner_id") String partner_id
     );
 
+    @FormUrlEncoded
+    @POST("authorization/updateRegistrationKey")
+    Call<MessageModel> updateRegistrationKey(
+      @Field("access_key") String access_key,
+      @Field("registration_key") String registration_key,
+      @Field("partner_id") String partner_id
+    );
+
 }

@@ -20,13 +20,6 @@
         android:src="@mipmap/pp"
         android:layout_height="match_parent" />
 
-    <com.hanks.library.AnimateCheckBox
-        android:layout_width="40dp"
-        android:id="@+id/coupon_check_box"
-        app:lineWidth="1.2dp"
-        android:padding="6dp"
-        app:checkedColor="#f00"
-        android:layout_height="40dp" />
 
 <RelativeLayout
     android:layout_marginBottom="-6dp"
@@ -43,7 +36,7 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content">
 
-       <TextView
+       <CheckBox
            android:layout_width="wrap_content"
            android:text="Chill 20"
            android:layout_centerHorizontal="true"

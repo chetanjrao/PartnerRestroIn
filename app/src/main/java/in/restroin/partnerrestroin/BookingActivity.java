@@ -21,6 +21,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,9 +58,14 @@ public class BookingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_booking);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        TextView textView = (TextView) findViewById(R.id.error_text_view);
+        RelativeLayout BookingLayout = (RelativeLayout) findViewById(R.id.booking_relative_layout);
+        progressBar.setVisibility(View.VISIBLE);
+        textView.setVisibility(View.GONE);
+        BookingLayout.setVisibility(View.GONE);
         overridePendingTransition(R.anim.right_slide_in, R.anim.right_silde_out);
         setDetails(getIntent().getStringExtra("booking_id"));
-        Toast.makeText(this, "Booking ID: " + getIntent().getStringExtra("booking_id") + " .Booking Status: " + getIntent().getStringExtra("booking_status"), Toast.LENGTH_SHORT).show();
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.call_layout);
         relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,9 +83,13 @@ public class BookingActivity extends AppCompatActivity {
         relativeLayout1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(getIntent().getStringExtra("booking_status").equals("Confirm")){
+                    ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+                    TextView textView = (TextView) findViewById(R.id.error_text_view);
+                    RelativeLayout BookingLayout = (RelativeLayout) findViewById(R.id.booking_relative_layout);
+                    progressBar.setVisibility(View.VISIBLE);
+                    textView.setVisibility(View.GONE);
+                    BookingLayout.setVisibility(View.GONE);
                     UpdateBooking("Confirm", getIntent().getStringExtra("booking_id"));
-                }
             }
         });
 
@@ -87,6 +97,12 @@ public class BookingActivity extends AppCompatActivity {
         cancel_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+                TextView textView = (TextView) findViewById(R.id.error_text_view);
+                RelativeLayout BookingLayout = (RelativeLayout) findViewById(R.id.booking_relative_layout);
+                progressBar.setVisibility(View.VISIBLE);
+                textView.setVisibility(View.GONE);
+                BookingLayout.setVisibility(View.GONE);
                 UpdateBooking("Cancel", getIntent().getStringExtra("booking_id"));
             }
         });
@@ -113,7 +129,6 @@ public class BookingActivity extends AppCompatActivity {
                                         });
                                 return;
                             }
-
                     }
                 }
             break;
@@ -132,7 +147,7 @@ public class BookingActivity extends AppCompatActivity {
     private void UpdateBooking(String process_next_step, String booking_id){
         PartnerRestroINClient client = retrofit.create(PartnerRestroINClient.class);
         SavedPreferences savedPreferences = new SavedPreferences();
-        Call<MessageModel> call = client.updateBooking(savedPreferences.getApiKey(BookingActivity.this), savedPreferences.getPartnerID(BookingActivity.this), booking_id, "24", process_next_step, "0");
+        Call<MessageModel> call = client.updateBooking(savedPreferences.getApiKey(BookingActivity.this), savedPreferences.getPartnerID(BookingActivity.this), booking_id, savedPreferences.getRestaurantID(BookingActivity.this), process_next_step, "0");
         call.enqueue(new Callback<MessageModel>() {
             @Override
             public void onResponse(Call<MessageModel> call, Response<MessageModel> response) {
@@ -143,7 +158,13 @@ public class BookingActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<MessageModel> call, Throwable t) {
-
+                ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+                TextView textView = (TextView) findViewById(R.id.error_text_view);
+                RelativeLayout BookingLayout = (RelativeLayout) findViewById(R.id.booking_relative_layout);
+                progressBar.setVisibility(View.GONE);
+                textView.setVisibility(View.GONE);
+                BookingLayout.setVisibility(View.VISIBLE);
+                Toast.makeText(BookingActivity.this, "SomeThing went wrong. Please try again", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -151,7 +172,7 @@ public class BookingActivity extends AppCompatActivity {
     private void setDetails(String booking_id){
         PartnerRestroINClient client = retrofit.create(PartnerRestroINClient.class);
         SavedPreferences savedPreferences = new SavedPreferences();
-        Call<BookingDataModel> call = client.getSingleBookingData(savedPreferences.getApiKey(BookingActivity.this), savedPreferences.getPartnerID(BookingActivity.this), "24", booking_id);
+        Call<BookingDataModel> call = client.getSingleBookingData(savedPreferences.getApiKey(BookingActivity.this), savedPreferences.getPartnerID(BookingActivity.this), savedPreferences.getRestaurantID(BookingActivity.this), booking_id);
         call.enqueue(new Callback<BookingDataModel>() {
             @Override
             public void onResponse(Call<BookingDataModel> call, Response<BookingDataModel> response) {
@@ -184,11 +205,22 @@ public class BookingActivity extends AppCompatActivity {
                 TextView slot = (TextView) findViewById(R.id.booking_slot);
                 slot.setText(arrival_time);
                 customer_number = booking_phone;
+                ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+                TextView textView = (TextView) findViewById(R.id.error_text_view);
+                RelativeLayout BookingLayout = (RelativeLayout) findViewById(R.id.booking_relative_layout);
+                progressBar.setVisibility(View.GONE);
+                textView.setVisibility(View.GONE);
+                BookingLayout.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onFailure(Call<BookingDataModel> call, Throwable t) {
-
+                ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+                TextView textView = (TextView) findViewById(R.id.error_text_view);
+                RelativeLayout BookingLayout = (RelativeLayout) findViewById(R.id.booking_relative_layout);
+                progressBar.setVisibility(View.GONE);
+                textView.setVisibility(View.VISIBLE);
+                BookingLayout.setVisibility(View.GONE);
             }
         });
     }

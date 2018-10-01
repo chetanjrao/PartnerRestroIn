@@ -26,6 +26,9 @@ public class SavedPreferences {
     public void removeSharedPreferences(@NonNull Context context){
         this.context = context;
         sharedPreferences = context.getSharedPreferences(KEY_TYPE, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences1 = context.getSharedPreferences("Notifications", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor1 = sharedPreferences1.edit();
+        editor1.remove("device_uid").apply();
         SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.remove("auth_username");
             editor.remove("auth_password");

@@ -61,11 +61,11 @@ public class AnalyticsActivity extends AppCompatActivity {
         token = new PartnerMessagingService().getToken();
         if(new SavedPreferences().device_uid_get(AnalyticsActivity.this) == null){
             setDeviceUID(new SavedPreferences().getApiKey(AnalyticsActivity.this), FirebaseInstanceId.getInstance().getToken() );
-            Toast.makeText(this, "Device ID: " + FirebaseInstanceId.getInstance().getToken(), Toast.LENGTH_SHORT).show();
         }
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         overridePendingTransition(0, 0);
+        Log.d("RegisToken", "Registration Token: " + FirebaseInstanceId.getInstance().getToken());
     }
 
     @Override

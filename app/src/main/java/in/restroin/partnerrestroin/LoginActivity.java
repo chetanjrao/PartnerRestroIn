@@ -92,31 +92,34 @@ public class LoginActivity extends AppCompatActivity {
             loginAttempt.enqueue(new Callback<AuthenModel>() {
                 @Override
                 public void onResponse(@NonNull Call<AuthenModel> call,@NonNull Response<AuthenModel> response) {
-                    String access_token = response.body().getAccess_token();
-                    String message = response.body().getMessage();
-                    String error_code = response.body().getError_code();
-                    String partner_id = response.body().getPartner_id();
-                    String restaurant_id = response.body().getRestaurant_id();
-                    Log.d("AuthLogging", "Access Token: " + access_token + " Message: " + message);
-                    if(access_token != null && error_code == null){
-                        SavedPreferences preferences = new SavedPreferences();
-                        preferences.setSharedPreferences(LoginActivity.this, username, password, access_token, partner_id, restaurant_id);
-                        Intent goToDashBoard = new Intent(LoginActivity.this, AnalyticsActivity.class);
-                        startActivity(goToDashBoard);
-                    } else if (access_token != null && error_code.equals("102")){
-                        Toast.makeText(LoginActivity.this, "Unable to assign Token", Toast.LENGTH_SHORT).show();
-                    } else if(access_token == null && error_code.equals("401")){
-                        final CardView loginCardView = (CardView) findViewById(R.id.loginCardView);
-                        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.loginProgressBar);
-                        progressBar.setVisibility(View.GONE);
-                        progressBar.setVisibility(View.GONE);
-                        loginCardView.setVisibility(View.VISIBLE);
-                        Toast.makeText(LoginActivity.this, "Invalid Login Attempt", Toast.LENGTH_SHORT).show();
+                    AuthenModel model = response.body();
+                    if(model != null){
+                        String access_token = model.getAccess_token();
+                        String message = model.getMessage();
+                        String error_code = model.getError_code();
+                        String partner_id = model.getPartner_id();
+                        String restaurant_id = model.getRestaurant_id();
+                        Log.d("AuthLogging", "Access Token: " + access_token + " Message: " + message);
+                        if(access_token != null && error_code == null){
+                            SavedPreferences preferences = new SavedPreferences();
+                            preferences.setSharedPreferences(LoginActivity.this, username, password, access_token, partner_id, restaurant_id);
+                            Intent goToDashBoard = new Intent(LoginActivity.this, AnalyticsActivity.class);
+                            startActivity(goToDashBoard);
+                        } else if (access_token != null && error_code.equals("102")){
+                            Toast.makeText(LoginActivity.this, "Unable to assign Token", Toast.LENGTH_SHORT).show();
+                        } else if(access_token == null && error_code.equals("401")){
+                            final CardView loginCardView = (CardView) findViewById(R.id.loginCardView);
+                            final ProgressBar progressBar = (ProgressBar) findViewById(R.id.loginProgressBar);
+                            progressBar.setVisibility(View.GONE);
+                            progressBar.setVisibility(View.GONE);
+                            loginCardView.setVisibility(View.VISIBLE);
+                            Toast.makeText(LoginActivity.this, "Invalid Login Attempt", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
 
                 @Override
-                public void onFailure(Call<AuthenModel> call, Throwable t) {
+                public void onFailure(@NonNull Call<AuthenModel> call,@NonNull Throwable t) {
                     final CardView loginCardView = (CardView) findViewById(R.id.loginCardView);
                     final ProgressBar progressBar = (ProgressBar) findViewById(R.id.loginProgressBar);
                     progressBar.setVisibility(View.GONE);
