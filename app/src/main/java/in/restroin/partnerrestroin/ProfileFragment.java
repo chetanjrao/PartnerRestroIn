@@ -1,13 +1,19 @@
 package in.restroin.partnerrestroin;
 
+import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -49,12 +55,25 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        final View view = inflater.inflate(R.layout.fragment_profile, container, false);
         //TODO: Call the object for the profile model using the partners id and the access key given in the shared preferences
         SwipeRefreshLayout dashboardRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.profile_swipe_layout);
         dashboardRefreshLayout.setVisibility(View.GONE);
         TextView error_text = (TextView) view.findViewById(R.id.error_text_view);
         error_text.setVisibility(View.GONE);
+        RelativeLayout need_help = (RelativeLayout) view.findViewById(R.id.need_help);
+        need_help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_CALL);
+                intent.setData(Uri.parse("tel:" + "9110466718"));
+                if (ActivityCompat.checkSelfPermission(view.getContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, 200);
+                    return;
+                }
+                startActivity(intent);
+            }
+        });
         ProgressBar loadingProgressBar = (ProgressBar) view.findViewById(R.id.profileProgressBar);
         loadingProgressBar.setVisibility(View.VISIBLE);
         getProfileDetails(new SavedPreferences().getApiKey(view.getContext()), new SavedPreferences().getPartnerID(view.getContext()), view);
@@ -111,5 +130,40 @@ public class ProfileFragment extends Fragment {
                 view.findViewById(R.id.error_text_view).setVisibility(View.VISIBLE);
             }
         });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,@NonNull String permissions[],@NonNull int[] grantResults) {
+        switch (requestCode) {
+            case 200:
+                if (grantResults.length > 0) {
+                    boolean CallPermissionAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                    if (!CallPermissionAccepted){
+                        if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CALL_PHONE)) {
+                            showMessageOKCancel("PartnerRestroIN requests you to allow access",
+                                    new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                                requestPermissions(new String[]{"android.Manifest.permission.CALL_PHONE"},
+                                                        200);
+                                            }
+                                        }
+                                    });
+                            return;
+                        }
+                    }
+                }
+                break;
+        }
+    }
+
+    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
+        new AlertDialog.Builder(getActivity().getApplicationContext())
+                .setMessage(message)
+                .setPositiveButton("OK", okListener)
+                .setNegativeButton("Cancel", null)
+                .create()
+                .show();
     }
 }

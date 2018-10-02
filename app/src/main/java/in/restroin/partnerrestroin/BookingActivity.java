@@ -154,6 +154,9 @@ public class BookingActivity extends AppCompatActivity {
                 String message = response.body().getMessage();
                 Toast.makeText(BookingActivity.this, "Message: " + message, Toast.LENGTH_SHORT).show();
                 finish();
+//                Intent intent = new Intent(BookingActivity.this, AnalyticsActivity.class);
+//                intent.putExtra("Restart", "yes");
+//                startActivity(intent);
             }
 
             @Override

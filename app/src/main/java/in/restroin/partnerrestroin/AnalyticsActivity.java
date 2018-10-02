@@ -8,6 +8,7 @@ import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -70,7 +71,7 @@ public class AnalyticsActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
-
+        setDeviceUID(new SavedPreferences().getApiKey(AnalyticsActivity.this), FirebaseInstanceId.getInstance().getToken() );
         super.onStart();
     }
 

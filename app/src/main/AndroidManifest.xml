@@ -9,14 +9,16 @@
         android:required="true" />
 
     <application
-        tools:replace="android:label"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_new_round"
         android:label="PartnerRestroIN"
         android:roundIcon="@mipmap/ic_launcher_new_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:screenOrientation="portrait" android:name=".LoginActivity">
+        android:theme="@style/AppTheme"
+        tools:replace="android:label">
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,31 +26,39 @@
             </intent-filter>
         </activity>
         <activity
-            android:screenOrientation="portrait"
             android:name=".AnalyticsActivity"
-            android:label="@string/title_activity_analytics" />
+            android:label="@string/title_activity_analytics"
+            android:screenOrientation="portrait" />
+
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_logo" />
-        <meta-data android:name="com.google.firebase.messaging.default_notification_color"
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorPrimary" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:screenOrientation="portrait"
             android:name=".BookingActivity"
             android:label="@string/title_activity_booking"
-            android:theme="@style/AppTheme" >
-            <intent-filter> <action android:name="booking_activity_open" /> <category android:name="android.intent.category.DEFAULT" /> </intent-filter>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="booking_activity_open" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity
-            android:screenOrientation="portrait"
             android:name=".CompleteDining"
             android:label="@string/title_activity_complete_dining"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-        <activity android:screenOrientation="portrait" android:name=".CouponsActivity">
+        <activity
+            android:name=".CouponsActivity"
+            android:screenOrientation="portrait">
 
         </activity>
 
