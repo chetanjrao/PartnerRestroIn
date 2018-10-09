@@ -30,6 +30,7 @@ import in.restroin.partnerrestroin.models.CouponsModel;
 public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHolder>{
     private List<CouponsModel> couponsModels = new ArrayList<>();
     private List<String> selectedCoupons = new ArrayList<String>();
+    public List<String> collectedCouponsWithoutQuot = new ArrayList<String>();
     private int SelectedItem = 0;
 
     public List<String> getSelectedCoupons() {
@@ -66,9 +67,6 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-//        if(selectedCoupons.size() == 0){
-//            selectedCoupons.add(couponsModels.get(0).getCoupon_id());
-//        }
         final CouponsModel couponsModel = couponsModels.get(position);
         holder.coupon_name.setText(couponsModels.get(position).getCoupon_code());
         holder.description.setText(couponsModels.get(position).getDescription());
@@ -88,16 +86,18 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.ViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(selectedCoupons.contains(couponsModel.getCoupon_id())){
-                    selectedCoupons.remove(couponsModel.getCoupon_id());
+                if(collectedCouponsWithoutQuot.contains(couponsModel.getCoupon_id())){
+                    collectedCouponsWithoutQuot.remove(couponsModel.getCoupon_id());
+                    selectedCoupons.remove('"' + couponsModel.getCoupon_id() + '"');
                     holder.coupon_name.setChecked(false);
                 } else {
+                    collectedCouponsWithoutQuot.add(couponsModel.getCoupon_id());
+                    selectedCoupons.add('"' + couponsModel.getCoupon_id() + '"');
                     holder.coupon_name.setChecked(true);
-                    selectedCoupons.add(couponsModel.getCoupon_id());
                 }
             }
         });
-        if(selectedCoupons.contains(couponsModel.getCoupon_id())){
+        if(collectedCouponsWithoutQuot.contains(couponsModel.getCoupon_id())){
             holder.coupon_name.setChecked(true);
         } else {
             holder.coupon_name.setChecked(false);

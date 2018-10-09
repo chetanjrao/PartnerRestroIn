@@ -43,7 +43,9 @@
            android:fontFamily="@font/raleway_"
            android:textSize="20sp"
            android:textColor="#fff"
+           android:focusable="false"
            android:textStyle="bold"
+           android:clickable="false"
            android:id="@+id/coupon_name"
            android:layout_height="wrap_content" />
 

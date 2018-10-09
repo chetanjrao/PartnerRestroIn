@@ -60,7 +60,7 @@ public class CompleteDining extends AppCompatActivity {
     private void CompleteBooking(String booking_id, String billAmount){
         PartnerRestroINClient client = retrofit.create(PartnerRestroINClient.class);
         SavedPreferences savedPreferences = new SavedPreferences();
-        Call<MessageModel> call = client.updateBooking(savedPreferences.getApiKey(CompleteDining.this), savedPreferences.getPartnerID(CompleteDining.this), booking_id, "24", "Completed", billAmount);
+        Call<MessageModel> call = client.updateBooking(savedPreferences.getApiKey(CompleteDining.this), savedPreferences.getPartnerID(CompleteDining.this), booking_id, savedPreferences.getRestaurantID(CompleteDining.this), "Completed", billAmount);
         call.enqueue(new Callback<MessageModel>() {
             @Override
             public void onResponse(@NonNull Call<MessageModel> call,@NonNull Response<MessageModel> response) {
